@@ -1,0 +1,23 @@
+//
+//  ReactiveNetworkingTests-Prefix.pch
+//  ReactiveNetworking
+//
+//  Created by Johannes Plunien on 15/06/14.
+//  Copyright (c) 2014 Johannes Plunien. All rights reserved.
+//
+
+#ifdef __OBJC__
+    #if __IPHONE_OS_VERSION_MIN_REQUIRED
+        #import <OHHTTPStubs-iOS/OHHTTPStubs.h>
+    #else
+        #import <OHHTTPStubs/OHHTTPStubs.h>
+    #endif
+
+    #import "Specta.h"
+
+    #define EXP_SHORTHAND
+    #import "Expecta.h"
+
+    #import <XCTest/XCTest.h>
+    #import <ReactiveNetworking/ReactiveNetworking.h>
+#endif

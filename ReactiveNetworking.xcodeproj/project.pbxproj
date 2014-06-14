@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		339C9D0B99D34A01A794F13F /* libPods-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC299B3EAB7A4C03BB0F7BC3 /* libPods-ios.a */; };
+		3EC1A5A3194CFD2700D042AB /* RNClientSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC1A5A2194CFD2700D042AB /* RNClientSpec.m */; };
+		3EC1A5A4194CFD2700D042AB /* RNClientSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC1A5A2194CFD2700D042AB /* RNClientSpec.m */; };
 		3EF40022194CF33700B163B6 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EF40021194CF33700B163B6 /* Cocoa.framework */; };
 		3EF40036194CF33800B163B6 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EF4FFC0194C271A00B163B6 /* XCTest.framework */; };
 		3EF40037194CF33800B163B6 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EF40021194CF33700B163B6 /* Cocoa.framework */; };
@@ -54,6 +56,8 @@
 
 /* Begin PBXFileReference section */
 		3EC1A59D194CFBA100D042AB /* Pods-osx.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-osx.xcconfig"; path = "Pods/Pods-osx.xcconfig"; sourceTree = "<group>"; };
+		3EC1A5A2194CFD2700D042AB /* RNClientSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNClientSpec.m; sourceTree = "<group>"; };
+		3EC1A5A5194CFD7E00D042AB /* ReactiveNetworkingTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ReactiveNetworkingTests-Prefix.pch"; sourceTree = "<group>"; };
 		3EF40020194CF33700B163B6 /* ReactiveNetworking Mac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "ReactiveNetworking Mac.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EF40021194CF33700B163B6 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
 		3EF40024194CF33800B163B6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -124,6 +128,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3EC1A5A7194CFDD700D042AB /* Specs */ = {
+			isa = PBXGroup;
+			children = (
+				3EC1A5A2194CFD2700D042AB /* RNClientSpec.m */,
+			);
+			name = Specs;
+			sourceTree = "<group>";
+		};
 		3EF40023194CF33800B163B6 /* Other Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -194,6 +206,7 @@
 		3EF4FFC8194C271A00B163B6 /* ReactiveNetworkingTests */ = {
 			isa = PBXGroup;
 			children = (
+				3EC1A5A7194CFDD700D042AB /* Specs */,
 				3EF4FFC9194C271A00B163B6 /* Supporting Files */,
 			);
 			path = ReactiveNetworkingTests;
@@ -204,6 +217,7 @@
 			children = (
 				3EF4FFCB194C271A00B163B6 /* InfoPlist.strings */,
 				3EF4FFCA194C271A00B163B6 /* ReactiveNetworkingTests-Info.plist */,
+				3EC1A5A5194CFD7E00D042AB /* ReactiveNetworkingTests-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -327,9 +341,6 @@
 					3EF40034194CF33800B163B6 = {
 						TestTargetID = 3EF4001F194CF33700B163B6;
 					};
-					3EF4FFBE194C271A00B163B6 = {
-						TestTargetID = 3EF4001F194CF33700B163B6;
-					};
 				};
 			};
 			buildConfigurationList = 3EF4FFAA194C271A00B163B6 /* Build configuration list for PBXProject "ReactiveNetworking" */;
@@ -437,6 +448,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3EC1A5A4194CFD2700D042AB /* RNClientSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -451,6 +463,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3EC1A5A3194CFD2700D042AB /* RNClientSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -540,7 +553,7 @@
 				);
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ReactiveNetworking Mac/ReactiveNetworking Mac-Prefix.pch";
+				GCC_PREFIX_HEADER = "ReactiveNetworkingTests/ReactiveNetworkingTests-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -566,7 +579,7 @@
 				);
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ReactiveNetworking Mac/ReactiveNetworking Mac-Prefix.pch";
+				GCC_PREFIX_HEADER = "ReactiveNetworkingTests/ReactiveNetworkingTests-Prefix.pch";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -607,7 +620,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -639,7 +652,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -648,7 +661,7 @@
 		3EF4FFD3194C271A00B163B6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DSTROOT = /tmp/ReactiveNetworking.dst;
+				DSTROOT = "@rpath";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ReactiveNetworking/ReactiveNetworking-Prefix.pch";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -659,7 +672,7 @@
 		3EF4FFD4194C271A00B163B6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DSTROOT = /tmp/ReactiveNetworking.dst;
+				DSTROOT = "@rpath";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ReactiveNetworking/ReactiveNetworking-Prefix.pch";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -671,21 +684,19 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4434A736829946A3A8795B1C /* Pods-ios.xcconfig */;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ReactiveNetworking Mac.framework/Versions/A/ReactiveNetworking Mac";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ReactiveNetworking/ReactiveNetworking-Prefix.pch";
+				GCC_PREFIX_HEADER = "ReactiveNetworkingTests/ReactiveNetworkingTests-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "ReactiveNetworkingTests/ReactiveNetworkingTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Debug;
@@ -694,17 +705,15 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4434A736829946A3A8795B1C /* Pods-ios.xcconfig */;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ReactiveNetworking Mac.framework/Versions/A/ReactiveNetworking Mac";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ReactiveNetworking/ReactiveNetworking-Prefix.pch";
+				GCC_PREFIX_HEADER = "ReactiveNetworkingTests/ReactiveNetworkingTests-Prefix.pch";
 				INFOPLIST_FILE = "ReactiveNetworkingTests/ReactiveNetworkingTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;

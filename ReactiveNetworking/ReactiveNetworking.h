@@ -6,3 +6,4 @@
 //  Copyright (c) 2014 Johannes Plunien. All rights reserved.
 //
 
+#import <ReactiveNetworking/RNClient.h>
