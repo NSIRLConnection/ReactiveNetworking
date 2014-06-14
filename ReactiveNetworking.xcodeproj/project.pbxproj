@@ -54,6 +54,8 @@
 		3EF4FFDA194C2E8600B163B6 /* RNClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNClient.m; sourceTree = "<group>"; };
 		3EF4FFDC194C3CA200B163B6 /* RNObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNObject.h; sourceTree = "<group>"; };
 		3EF4FFDD194C3CA200B163B6 /* RNObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNObject.m; sourceTree = "<group>"; };
+		3EF4FFDF194C3E0600B163B6 /* RNResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNResponse.h; sourceTree = "<group>"; };
+		3EF4FFE0194C3E0600B163B6 /* RNResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNResponse.m; sourceTree = "<group>"; };
 		92C618DDB7164A3DAB345F4D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8C14CB067554488A9FE03B7 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -163,6 +165,8 @@
 			children = (
 				3EF4FFDC194C3CA200B163B6 /* RNObject.h */,
 				3EF4FFDD194C3CA200B163B6 /* RNObject.m */,
+				3EF4FFDF194C3E0600B163B6 /* RNResponse.h */,
+				3EF4FFE0194C3E0600B163B6 /* RNResponse.m */,
 			);
 			name = "Base Models";
 			sourceTree = "<group>";
