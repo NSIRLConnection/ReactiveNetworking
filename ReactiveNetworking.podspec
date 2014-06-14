@@ -16,4 +16,5 @@ Pod::Spec.new do |s|
   s.dependency 'AFNetworking', '~> 1.0'
   s.dependency 'Mantle', '~> 1.0'
   s.dependency 'ReactiveCocoa', '~> 2.0'
+  s.dependency 'ReactiveCocoa/UI', '~> 2.0'
 end
