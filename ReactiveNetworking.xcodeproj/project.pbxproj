@@ -1,0 +1,420 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3EF4FFB3194C271A00B163B6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EF4FFB2194C271A00B163B6 /* Foundation.framework */; };
+		3EF4FFB8194C271A00B163B6 /* ReactiveNetworking.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EF4FFB7194C271A00B163B6 /* ReactiveNetworking.h */; };
+		3EF4FFBA194C271A00B163B6 /* ReactiveNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF4FFB9194C271A00B163B6 /* ReactiveNetworking.m */; };
+		3EF4FFC1194C271A00B163B6 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EF4FFC0194C271A00B163B6 /* XCTest.framework */; };
+		3EF4FFC2194C271A00B163B6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EF4FFB2194C271A00B163B6 /* Foundation.framework */; };
+		3EF4FFC4194C271A00B163B6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EF4FFC3194C271A00B163B6 /* UIKit.framework */; };
+		3EF4FFC7194C271A00B163B6 /* libReactiveNetworking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EF4FFAF194C271A00B163B6 /* libReactiveNetworking.a */; };
+		3EF4FFCD194C271A00B163B6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3EF4FFCB194C271A00B163B6 /* InfoPlist.strings */; };
+		3EF4FFCF194C271A00B163B6 /* ReactiveNetworkingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF4FFCE194C271A00B163B6 /* ReactiveNetworkingTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3EF4FFC5194C271A00B163B6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3EF4FFA7194C271A00B163B6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3EF4FFAE194C271A00B163B6;
+			remoteInfo = ReactiveNetworking;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3EF4FFAD194C271A00B163B6 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				3EF4FFB8194C271A00B163B6 /* ReactiveNetworking.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		3EF4FFAF194C271A00B163B6 /* libReactiveNetworking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libReactiveNetworking.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		3EF4FFB2194C271A00B163B6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		3EF4FFB6194C271A00B163B6 /* ReactiveNetworking-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ReactiveNetworking-Prefix.pch"; sourceTree = "<group>"; };
+		3EF4FFB7194C271A00B163B6 /* ReactiveNetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReactiveNetworking.h; sourceTree = "<group>"; };
+		3EF4FFB9194C271A00B163B6 /* ReactiveNetworking.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReactiveNetworking.m; sourceTree = "<group>"; };
+		3EF4FFBF194C271A00B163B6 /* ReactiveNetworkingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReactiveNetworkingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3EF4FFC0194C271A00B163B6 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		3EF4FFC3194C271A00B163B6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		3EF4FFCA194C271A00B163B6 /* ReactiveNetworkingTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ReactiveNetworkingTests-Info.plist"; sourceTree = "<group>"; };
+		3EF4FFCC194C271A00B163B6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		3EF4FFCE194C271A00B163B6 /* ReactiveNetworkingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReactiveNetworkingTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3EF4FFAC194C271A00B163B6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3EF4FFB3194C271A00B163B6 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3EF4FFBC194C271A00B163B6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3EF4FFC7194C271A00B163B6 /* libReactiveNetworking.a in Frameworks */,
+				3EF4FFC1194C271A00B163B6 /* XCTest.framework in Frameworks */,
+				3EF4FFC4194C271A00B163B6 /* UIKit.framework in Frameworks */,
+				3EF4FFC2194C271A00B163B6 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3EF4FFA6194C271A00B163B6 = {
+			isa = PBXGroup;
+			children = (
+				3EF4FFB4194C271A00B163B6 /* ReactiveNetworking */,
+				3EF4FFC8194C271A00B163B6 /* ReactiveNetworkingTests */,
+				3EF4FFB1194C271A00B163B6 /* Frameworks */,
+				3EF4FFB0194C271A00B163B6 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3EF4FFB0194C271A00B163B6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3EF4FFAF194C271A00B163B6 /* libReactiveNetworking.a */,
+				3EF4FFBF194C271A00B163B6 /* ReactiveNetworkingTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3EF4FFB1194C271A00B163B6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3EF4FFB2194C271A00B163B6 /* Foundation.framework */,
+				3EF4FFC0194C271A00B163B6 /* XCTest.framework */,
+				3EF4FFC3194C271A00B163B6 /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3EF4FFB4194C271A00B163B6 /* ReactiveNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				3EF4FFB7194C271A00B163B6 /* ReactiveNetworking.h */,
+				3EF4FFB9194C271A00B163B6 /* ReactiveNetworking.m */,
+				3EF4FFB5194C271A00B163B6 /* Supporting Files */,
+			);
+			path = ReactiveNetworking;
+			sourceTree = "<group>";
+		};
+		3EF4FFB5194C271A00B163B6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3EF4FFB6194C271A00B163B6 /* ReactiveNetworking-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3EF4FFC8194C271A00B163B6 /* ReactiveNetworkingTests */ = {
+			isa = PBXGroup;
+			children = (
+				3EF4FFCE194C271A00B163B6 /* ReactiveNetworkingTests.m */,
+				3EF4FFC9194C271A00B163B6 /* Supporting Files */,
+			);
+			path = ReactiveNetworkingTests;
+			sourceTree = "<group>";
+		};
+		3EF4FFC9194C271A00B163B6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3EF4FFCA194C271A00B163B6 /* ReactiveNetworkingTests-Info.plist */,
+				3EF4FFCB194C271A00B163B6 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3EF4FFAE194C271A00B163B6 /* ReactiveNetworking */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3EF4FFD2194C271A00B163B6 /* Build configuration list for PBXNativeTarget "ReactiveNetworking" */;
+			buildPhases = (
+				3EF4FFAB194C271A00B163B6 /* Sources */,
+				3EF4FFAC194C271A00B163B6 /* Frameworks */,
+				3EF4FFAD194C271A00B163B6 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ReactiveNetworking;
+			productName = ReactiveNetworking;
+			productReference = 3EF4FFAF194C271A00B163B6 /* libReactiveNetworking.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		3EF4FFBE194C271A00B163B6 /* ReactiveNetworkingTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3EF4FFD5194C271A00B163B6 /* Build configuration list for PBXNativeTarget "ReactiveNetworkingTests" */;
+			buildPhases = (
+				3EF4FFBB194C271A00B163B6 /* Sources */,
+				3EF4FFBC194C271A00B163B6 /* Frameworks */,
+				3EF4FFBD194C271A00B163B6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3EF4FFC6194C271A00B163B6 /* PBXTargetDependency */,
+			);
+			name = ReactiveNetworkingTests;
+			productName = ReactiveNetworkingTests;
+			productReference = 3EF4FFBF194C271A00B163B6 /* ReactiveNetworkingTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3EF4FFA7194C271A00B163B6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Johannes Plunien";
+			};
+			buildConfigurationList = 3EF4FFAA194C271A00B163B6 /* Build configuration list for PBXProject "ReactiveNetworking" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 3EF4FFA6194C271A00B163B6;
+			productRefGroup = 3EF4FFB0194C271A00B163B6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3EF4FFAE194C271A00B163B6 /* ReactiveNetworking */,
+				3EF4FFBE194C271A00B163B6 /* ReactiveNetworkingTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3EF4FFBD194C271A00B163B6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3EF4FFCD194C271A00B163B6 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3EF4FFAB194C271A00B163B6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3EF4FFBA194C271A00B163B6 /* ReactiveNetworking.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3EF4FFBB194C271A00B163B6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3EF4FFCF194C271A00B163B6 /* ReactiveNetworkingTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3EF4FFC6194C271A00B163B6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3EF4FFAE194C271A00B163B6 /* ReactiveNetworking */;
+			targetProxy = 3EF4FFC5194C271A00B163B6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3EF4FFCB194C271A00B163B6 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3EF4FFCC194C271A00B163B6 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3EF4FFD0194C271A00B163B6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		3EF4FFD1194C271A00B163B6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3EF4FFD3194C271A00B163B6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/ReactiveNetworking.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ReactiveNetworking/ReactiveNetworking-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		3EF4FFD4194C271A00B163B6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/ReactiveNetworking.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ReactiveNetworking/ReactiveNetworking-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		3EF4FFD6194C271A00B163B6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ReactiveNetworking/ReactiveNetworking-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "ReactiveNetworkingTests/ReactiveNetworkingTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		3EF4FFD7194C271A00B163B6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ReactiveNetworking/ReactiveNetworking-Prefix.pch";
+				INFOPLIST_FILE = "ReactiveNetworkingTests/ReactiveNetworkingTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3EF4FFAA194C271A00B163B6 /* Build configuration list for PBXProject "ReactiveNetworking" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3EF4FFD0194C271A00B163B6 /* Debug */,
+				3EF4FFD1194C271A00B163B6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3EF4FFD2194C271A00B163B6 /* Build configuration list for PBXNativeTarget "ReactiveNetworking" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3EF4FFD3194C271A00B163B6 /* Debug */,
+				3EF4FFD4194C271A00B163B6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		3EF4FFD5194C271A00B163B6 /* Build configuration list for PBXNativeTarget "ReactiveNetworkingTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3EF4FFD6194C271A00B163B6 /* Debug */,
+				3EF4FFD7194C271A00B163B6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3EF4FFA7194C271A00B163B6 /* Project object */;
+}
