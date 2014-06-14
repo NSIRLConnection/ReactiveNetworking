@@ -1,0 +1,14 @@
+PODS:
+  - ReactiveNetworking (0.9.0)
+
+DEPENDENCIES:
+  - ReactiveNetworking (from `.`)
+
+EXTERNAL SOURCES:
+  ReactiveNetworking:
+    :path: .
+
+SPEC CHECKSUMS:
+  ReactiveNetworking: e890af668c867187da95f54d0b764afca2c048dd
+
+COCOAPODS: 0.33.1

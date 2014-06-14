@@ -14,6 +14,7 @@
 		3EF4FFC4194C271A00B163B6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EF4FFC3194C271A00B163B6 /* UIKit.framework */; };
 		3EF4FFC7194C271A00B163B6 /* libReactiveNetworking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EF4FFAF194C271A00B163B6 /* libReactiveNetworking.a */; };
 		3EF4FFCD194C271A00B163B6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3EF4FFCB194C271A00B163B6 /* InfoPlist.strings */; };
+		E68034B33A684074AE2FE375 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 92C618DDB7164A3DAB345F4D /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,8 @@
 		3EF4FFC3194C271A00B163B6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		3EF4FFCA194C271A00B163B6 /* ReactiveNetworkingTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ReactiveNetworkingTests-Info.plist"; sourceTree = "<group>"; };
 		3EF4FFCC194C271A00B163B6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		92C618DDB7164A3DAB345F4D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8C14CB067554488A9FE03B7 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +60,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3EF4FFB3194C271A00B163B6 /* Foundation.framework in Frameworks */,
+				E68034B33A684074AE2FE375 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +85,7 @@
 				3EF4FFC8194C271A00B163B6 /* ReactiveNetworkingTests */,
 				3EF4FFB1194C271A00B163B6 /* Frameworks */,
 				3EF4FFB0194C271A00B163B6 /* Products */,
+				D8C14CB067554488A9FE03B7 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,6 +104,7 @@
 				3EF4FFB2194C271A00B163B6 /* Foundation.framework */,
 				3EF4FFC0194C271A00B163B6 /* XCTest.framework */,
 				3EF4FFC3194C271A00B163B6 /* UIKit.framework */,
+				92C618DDB7164A3DAB345F4D /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -144,9 +150,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3EF4FFD2194C271A00B163B6 /* Build configuration list for PBXNativeTarget "ReactiveNetworking" */;
 			buildPhases = (
+				3933BB9259644C35AFAF5D32 /* Check Pods Manifest.lock */,
 				3EF4FFAB194C271A00B163B6 /* Sources */,
 				3EF4FFAC194C271A00B163B6 /* Frameworks */,
 				3EF4FFAD194C271A00B163B6 /* CopyFiles */,
+				65911D09792D4FB8974A13F9 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -212,6 +220,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3933BB9259644C35AFAF5D32 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		65911D09792D4FB8974A13F9 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3EF4FFAB194C271A00B163B6 /* Sources */ = {
@@ -320,6 +361,7 @@
 		};
 		3EF4FFD3194C271A00B163B6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D8C14CB067554488A9FE03B7 /* Pods.xcconfig */;
 			buildSettings = {
 				DSTROOT = /tmp/ReactiveNetworking.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -332,6 +374,7 @@
 		};
 		3EF4FFD4194C271A00B163B6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D8C14CB067554488A9FE03B7 /* Pods.xcconfig */;
 			buildSettings = {
 				DSTROOT = /tmp/ReactiveNetworking.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -397,6 +440,7 @@
 				3EF4FFD4194C271A00B163B6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3EF4FFD5194C271A00B163B6 /* Build configuration list for PBXNativeTarget "ReactiveNetworkingTests" */ = {
 			isa = XCConfigurationList;
@@ -405,6 +449,7 @@
 				3EF4FFD7194C271A00B163B6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
