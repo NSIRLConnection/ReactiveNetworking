@@ -6,8 +6,3 @@
 //  Copyright (c) 2014 Johannes Plunien. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
-@interface ReactiveNetworking : NSObject
-
-@end

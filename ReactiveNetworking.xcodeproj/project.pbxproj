@@ -9,13 +9,11 @@
 /* Begin PBXBuildFile section */
 		3EF4FFB3194C271A00B163B6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EF4FFB2194C271A00B163B6 /* Foundation.framework */; };
 		3EF4FFB8194C271A00B163B6 /* ReactiveNetworking.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3EF4FFB7194C271A00B163B6 /* ReactiveNetworking.h */; };
-		3EF4FFBA194C271A00B163B6 /* ReactiveNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF4FFB9194C271A00B163B6 /* ReactiveNetworking.m */; };
 		3EF4FFC1194C271A00B163B6 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EF4FFC0194C271A00B163B6 /* XCTest.framework */; };
 		3EF4FFC2194C271A00B163B6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EF4FFB2194C271A00B163B6 /* Foundation.framework */; };
 		3EF4FFC4194C271A00B163B6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EF4FFC3194C271A00B163B6 /* UIKit.framework */; };
 		3EF4FFC7194C271A00B163B6 /* libReactiveNetworking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EF4FFAF194C271A00B163B6 /* libReactiveNetworking.a */; };
 		3EF4FFCD194C271A00B163B6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3EF4FFCB194C271A00B163B6 /* InfoPlist.strings */; };
-		3EF4FFCF194C271A00B163B6 /* ReactiveNetworkingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF4FFCE194C271A00B163B6 /* ReactiveNetworkingTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,13 +44,11 @@
 		3EF4FFB2194C271A00B163B6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3EF4FFB6194C271A00B163B6 /* ReactiveNetworking-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ReactiveNetworking-Prefix.pch"; sourceTree = "<group>"; };
 		3EF4FFB7194C271A00B163B6 /* ReactiveNetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReactiveNetworking.h; sourceTree = "<group>"; };
-		3EF4FFB9194C271A00B163B6 /* ReactiveNetworking.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReactiveNetworking.m; sourceTree = "<group>"; };
 		3EF4FFBF194C271A00B163B6 /* ReactiveNetworkingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReactiveNetworkingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EF4FFC0194C271A00B163B6 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		3EF4FFC3194C271A00B163B6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		3EF4FFCA194C271A00B163B6 /* ReactiveNetworkingTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ReactiveNetworkingTests-Info.plist"; sourceTree = "<group>"; };
 		3EF4FFCC194C271A00B163B6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		3EF4FFCE194C271A00B163B6 /* ReactiveNetworkingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReactiveNetworkingTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,7 +107,6 @@
 			isa = PBXGroup;
 			children = (
 				3EF4FFB7194C271A00B163B6 /* ReactiveNetworking.h */,
-				3EF4FFB9194C271A00B163B6 /* ReactiveNetworking.m */,
 				3EF4FFB5194C271A00B163B6 /* Supporting Files */,
 			);
 			path = ReactiveNetworking;
@@ -128,7 +123,6 @@
 		3EF4FFC8194C271A00B163B6 /* ReactiveNetworkingTests */ = {
 			isa = PBXGroup;
 			children = (
-				3EF4FFCE194C271A00B163B6 /* ReactiveNetworkingTests.m */,
 				3EF4FFC9194C271A00B163B6 /* Supporting Files */,
 			);
 			path = ReactiveNetworkingTests;
@@ -137,8 +131,8 @@
 		3EF4FFC9194C271A00B163B6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				3EF4FFCA194C271A00B163B6 /* ReactiveNetworkingTests-Info.plist */,
 				3EF4FFCB194C271A00B163B6 /* InfoPlist.strings */,
+				3EF4FFCA194C271A00B163B6 /* ReactiveNetworkingTests-Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -224,7 +218,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3EF4FFBA194C271A00B163B6 /* ReactiveNetworking.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,7 +225,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3EF4FFCF194C271A00B163B6 /* ReactiveNetworkingTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
