@@ -8,6 +8,9 @@
 
 #import <AFNetworking/AFNetworking.h>
 
+extern NSString * const RNClientErrorDomain;
+extern NSInteger const RNClientErrorJSONParsingFailed;
+
 @interface RNClient : AFHTTPClient
 
 @end
