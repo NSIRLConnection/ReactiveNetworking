@@ -7,3 +7,4 @@
 //
 
 #import <ReactiveNetworking/RNClient.h>
+#import <ReactiveNetworking/RNResponse.h>

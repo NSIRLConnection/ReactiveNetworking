@@ -17,10 +17,22 @@
 
 SpecBegin(RNClient)
 
+void (^stubResponseWithHeaders)(NSString *, NSString *, NSDictionary *) = ^(NSString *path, NSString *responseFilename, NSDictionary *headers) {
+	headers = [headers mtl_dictionaryByAddingEntriesFromDictionary:@{@"Content-Type": @"application/json"}];
+	[OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
+		return [request.URL.path isEqual:path];
+    } withStubResponse:^OHHTTPStubsResponse *(NSURLRequest *request) {
+		NSURL *fileURL = [[NSBundle bundleForClass:self.class] URLForResource:responseFilename.stringByDeletingPathExtension withExtension:responseFilename.pathExtension];
+		return [OHHTTPStubsResponse responseWithFileAtPath:fileURL.path statusCode:200 headers:headers];
+	}];
+};
+
 __block RNClient *client;
 
 beforeEach(^{
     client = [[RNClient alloc] initWithBaseURL:[NSURL URLWithString:@"https://api.github.com"]];
+    [client registerHTTPOperationClass:AFJSONRequestOperation.class];
+    [client setDefaultHeader:@"Accept" value:@"application/json"];
     expect(client).notTo.beNil();
 });
 
@@ -36,40 +48,50 @@ describe(@"parsingErrorWithFailureReason", ^{
 });
 
 describe(@"parsedResponseOfClass", ^{
-    it(@"should only parse NSArray and NSDictionary", ^{
-        __block NSError *objectError;
-        NSObject *object = [[NSObject alloc] init];
-        [[client parsedResponseOfClass:nil fromJSON:object] subscribeError:^(NSError *e) { objectError = e; }];
-        expect(objectError).willNot.beNil();
+    __block BOOL success;
+    __block NSError *error;
 
-        __block NSError *dictionaryError;
-        NSDictionary *dictionary = [[NSDictionary alloc] init];
-        [[client parsedResponseOfClass:nil fromJSON:dictionary] subscribeError:^(NSError *e) { dictionaryError = e; }];
-        expect(dictionaryError).will.beNil();
+    beforeEach(^{
+        success = NO;
+        error = nil;
+    });
 
-        __block NSError *arrayError;
+    it(@"should parse NSArray", ^{
         NSArray *array = [[NSArray alloc] init];
-        [[client parsedResponseOfClass:nil fromJSON:array] subscribeError:^(NSError *e) { arrayError = e; }];
-        expect(arrayError).will.beNil();
+        [[client parsedResponseOfClass:nil fromJSON:array] asynchronousFirstOrDefault:nil success:&success error:&error];
+		expect(success).to.beTruthy();
+		expect(error).to.beNil();
     });
 
-    it(@"should let NSDictionary just fall through without a result class", ^{
-        __block id result;
+    it(@"should parse NSDictionary", ^{
+        NSDictionary *dictionary = [[NSDictionary alloc] init];
+        [[client parsedResponseOfClass:nil fromJSON:dictionary] asynchronousFirstOrDefault:nil success:&success error:&error];
+		expect(success).to.beTruthy();
+		expect(error).to.beNil();
+    });
+
+    it(@"should not parse NSObject", ^{
+        NSObject *object = [[NSObject alloc] init];
+        [[client parsedResponseOfClass:nil fromJSON:object] asynchronousFirstOrDefault:nil success:&success error:&error];
+		expect(success).to.beFalsy();
+		expect(error).notTo.beNil();
+    });
+
+    it(@"should pass NSDictionary through", ^{
         NSDictionary *dictionary = @{@"foo": @"bar"};
-        [[client parsedResponseOfClass:nil fromJSON:dictionary] subscribeNext:^(id d) {
-            result = d;
-        }];
-        expect(result).will.beKindOf(NSDictionary.class);
-        expect(result).will.equal(dictionary);
+        NSDictionary *result = [[client parsedResponseOfClass:nil fromJSON:dictionary] asynchronousFirstOrDefault:nil success:&success error:&error];
+		expect(success).to.beTruthy();
+		expect(error).to.beNil();
+        expect(result).to.equal(dictionary);
     });
 
-    it(@"should let NSArray just fall through without a result class", ^{
+    it(@"should pass NSArray through", ^{
         NSMutableArray *result = [NSMutableArray array];
         NSArray *array = @[@{@"one": @"one"}, @{@"two": @"two"}];
         [[client parsedResponseOfClass:nil fromJSON:array] subscribeNext:^(id d) {
             [result addObject:d];
         }];
-        expect(result).will.equal(array);
+        expect(result).to.equal(array);
     });
 
     it(@"should require result class be a subclass of MTLModel", ^{
@@ -77,14 +99,35 @@ describe(@"parsedResponseOfClass", ^{
     });
 
     it(@"should return the parsed object", ^{
-        __block id result;
         NSDictionary *dictionary = @{@"id": @(42)};
-        [[client parsedResponseOfClass:RNObject.class fromJSON:dictionary] subscribeNext:^(id d) {
-            result = d;
-        }];
-        RNObject *model = (RNObject *)result;
-        expect(result).will.beKindOf(RNObject.class);
-        expect(model.objectID).will.equal(@"42");
+        RNObject *result = [[client parsedResponseOfClass:RNObject.class fromJSON:dictionary] asynchronousFirstOrDefault:nil success:&success error:&error];
+		expect(success).to.beTruthy();
+		expect(error).to.beNil();
+        expect(result.objectID).to.equal(@"42");
+    });
+});
+
+describe(@"enqueueRequest", ^{
+    __block BOOL success;
+    __block NSError *error;
+
+    beforeEach(^{
+        success = NO;
+        error = nil;
+    });
+
+    it(@"should return the object", ^{
+        stubResponseWithHeaders(@"/object", @"object.json", @{});
+
+		NSURLRequest *request = [client requestWithMethod:@"GET" path:@"object" parameters:nil];
+		RACSignal *result = [client enqueueRequest:request resultClass:RNObject.class];
+		RNResponse *response = [result asynchronousFirstOrDefault:nil success:&success error:&error];
+        RNObject *object = response.parsedResult;
+
+		expect(response).notTo.beNil();
+		expect(success).to.beTruthy();
+		expect(error).to.beNil();
+		expect(object.objectID).to.equal(@"1234");
     });
 });
 

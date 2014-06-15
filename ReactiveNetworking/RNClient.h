@@ -13,4 +13,6 @@ extern NSInteger const RNClientErrorJSONParsingFailed;
 
 @interface RNClient : AFHTTPClient
 
+- (RACSignal *)enqueueRequest:(NSURLRequest *)request resultClass:(Class)resultClass;
+
 @end
