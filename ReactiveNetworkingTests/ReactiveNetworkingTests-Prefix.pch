@@ -19,5 +19,6 @@
     #import "Expecta.h"
 
     #import <XCTest/XCTest.h>
+    #import <ReactiveCocoa/ReactiveCocoa.h>
     #import <ReactiveNetworking/ReactiveNetworking.h>
 #endif
