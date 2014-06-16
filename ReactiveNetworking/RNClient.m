@@ -31,62 +31,62 @@ NSInteger const RNClientErrorUnsupportedServerScheme = 1006;
 
 - (RACSignal *)enqueueRequest:(NSURLRequest *)request
 {
-	NSURLRequest *originalRequest = [request copy];
-	RACSignal *signal = [RACSignal createSignal:^(id<RACSubscriber> subscriber) {
-		AFHTTPRequestOperation *operation = [self HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
-			if (operation.response.statusCode == RNClientNotModifiedStatusCode) {
-				// No change in the data.
-				[subscriber sendCompleted];
-				return;
-			}
+    NSURLRequest *originalRequest = [request copy];
+    RACSignal *signal = [RACSignal createSignal:^(id<RACSubscriber> subscriber) {
+        AFHTTPRequestOperation *operation = [self HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            if (operation.response.statusCode == RNClientNotModifiedStatusCode) {
+                // No change in the data.
+                [subscriber sendCompleted];
+                return;
+            }
 
-			[[RACSignal
+            [[RACSignal
                return:RACTuplePack(operation.response, responseObject)]
              subscribe:subscriber];
-		} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-			[subscriber sendError:[self.class errorFromRequestOperation:operation]];
-		}];
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            [subscriber sendError:[self.class errorFromRequestOperation:operation]];
+        }];
 
-		operation.successCallbackQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-		operation.failureCallbackQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        operation.successCallbackQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        operation.failureCallbackQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
 
-		@weakify(operation);
-		operation.redirectResponseBlock = ^(NSURLConnection *connection, NSURLRequest *currentRequest, NSURLResponse *redirectResponse) {
-			@strongify(operation);
-			if (redirectResponse == nil) return currentRequest;
+        @weakify(operation);
+        operation.redirectResponseBlock = ^(NSURLConnection *connection, NSURLRequest *currentRequest, NSURLResponse *redirectResponse) {
+            @strongify(operation);
+            if (redirectResponse == nil) return currentRequest;
 
-			// Append RNClientErrorRequestStateRedirected to the current
-			// operation's userInfo when redirecting to a different URL scheme
-			NSString *currentHost = currentRequest.URL.host;
-			NSString *originalHost = originalRequest.URL.host;
-			NSString *currentScheme = currentRequest.URL.scheme;
-			NSString *originalScheme = originalRequest.URL.scheme;
+            // Append RNClientErrorRequestStateRedirected to the current
+            // operation's userInfo when redirecting to a different URL scheme
+            NSString *currentHost = currentRequest.URL.host;
+            NSString *originalHost = originalRequest.URL.host;
+            NSString *currentScheme = currentRequest.URL.scheme;
+            NSString *originalScheme = originalRequest.URL.scheme;
 
-			BOOL hasOriginalHost = [currentHost isEqual:originalHost];
-			BOOL hasOriginalScheme = [currentScheme isEqual:originalScheme];
+            BOOL hasOriginalHost = [currentHost isEqual:originalHost];
+            BOOL hasOriginalScheme = [currentScheme isEqual:originalScheme];
 
-			if (hasOriginalHost && !hasOriginalScheme) {
-				operation.userInfo = @{RNClientErrorRequestStateRedirected: @YES};
-			}
+            if (hasOriginalHost && !hasOriginalScheme) {
+                operation.userInfo = @{RNClientErrorRequestStateRedirected: @YES};
+            }
 
-			return currentRequest;
-		};
+            return currentRequest;
+        };
 
-		[self enqueueHTTPRequestOperation:operation];
+        [self enqueueHTTPRequestOperation:operation];
 
-		return [RACDisposable disposableWithBlock:^{
-			[operation cancel];
-		}];
-	}];
+        return [RACDisposable disposableWithBlock:^{
+            [operation cancel];
+        }];
+    }];
 
-	return [[signal
+    return [[signal
              replayLazily]
             setNameWithFormat:@"-enqueueRequest: %@", request];
 }
 
 - (RACSignal *)enqueueRequest:(NSURLRequest *)request resultClass:(Class)resultClass keyPaths:(NSArray *)keyPaths
 {
-	return [[[self
+    return [[[self
               enqueueRequest:request]
              reduceEach:^(NSHTTPURLResponse *response, id responseObject) {
                  __block id wantedObject = responseObject;
@@ -109,101 +109,101 @@ NSInteger const RNClientErrorUnsupportedServerScheme = 1006;
 
 - (RACSignal *)parsedResponseOfClass:(Class)resultClass fromJSON:(id)responseObject
 {
-	NSParameterAssert(resultClass == nil || [resultClass isSubclassOfClass:MTLModel.class]);
+    NSParameterAssert(resultClass == nil || [resultClass isSubclassOfClass:MTLModel.class]);
 
-	return [RACSignal createSignal:^ id (id<RACSubscriber> subscriber) {
-		void (^parseJSONDictionary)(NSDictionary *) = ^(NSDictionary *JSONDictionary) {
-			if (resultClass == nil) {
-				[subscriber sendNext:JSONDictionary];
-				return;
-			}
+    return [RACSignal createSignal:^ id (id<RACSubscriber> subscriber) {
+        void (^parseJSONDictionary)(NSDictionary *) = ^(NSDictionary *JSONDictionary) {
+            if (resultClass == nil) {
+                [subscriber sendNext:JSONDictionary];
+                return;
+            }
 
-			NSError *error = nil;
-			RNObject *parsedObject = [MTLJSONAdapter modelOfClass:resultClass fromJSONDictionary:JSONDictionary error:&error];
-			if (parsedObject == nil) {
-				// Don't treat "no class found" errors as real parsing failures.
-				// In theory, this makes parsing code forward-compatible with
-				// API additions.
-				if (![error.domain isEqual:MTLJSONAdapterErrorDomain] || error.code != MTLJSONAdapterErrorNoClassFound) {
-					[subscriber sendError:error];
-				}
+            NSError *error = nil;
+            RNObject *parsedObject = [MTLJSONAdapter modelOfClass:resultClass fromJSONDictionary:JSONDictionary error:&error];
+            if (parsedObject == nil) {
+                // Don't treat "no class found" errors as real parsing failures.
+                // In theory, this makes parsing code forward-compatible with
+                // API additions.
+                if (![error.domain isEqual:MTLJSONAdapterErrorDomain] || error.code != MTLJSONAdapterErrorNoClassFound) {
+                    [subscriber sendError:error];
+                }
 
-				return;
-			}
+                return;
+            }
 
-			NSAssert([parsedObject isKindOfClass:RNObject.class], @"Parsed model object is not an RNObject: %@", parsedObject);
+            NSAssert([parsedObject isKindOfClass:RNObject.class], @"Parsed model object is not an RNObject: %@", parsedObject);
 
-			[subscriber sendNext:parsedObject];
-		};
+            [subscriber sendNext:parsedObject];
+        };
 
-		if ([responseObject isKindOfClass:NSArray.class]) {
-			for (NSDictionary *JSONDictionary in responseObject) {
-				if (![JSONDictionary isKindOfClass:NSDictionary.class]) {
-					NSString *failureReason = [NSString stringWithFormat:NSLocalizedString(@"Invalid JSON array element: %@", @""), JSONDictionary];
-					[subscriber sendError:[self parsingErrorWithFailureReason:failureReason]];
-					return nil;
-				}
+        if ([responseObject isKindOfClass:NSArray.class]) {
+            for (NSDictionary *JSONDictionary in responseObject) {
+                if (![JSONDictionary isKindOfClass:NSDictionary.class]) {
+                    NSString *failureReason = [NSString stringWithFormat:NSLocalizedString(@"Invalid JSON array element: %@", @""), JSONDictionary];
+                    [subscriber sendError:[self parsingErrorWithFailureReason:failureReason]];
+                    return nil;
+                }
 
-				parseJSONDictionary(JSONDictionary);
-			}
+                parseJSONDictionary(JSONDictionary);
+            }
 
-			[subscriber sendCompleted];
-		}
+            [subscriber sendCompleted];
+        }
         else if ([responseObject isKindOfClass:NSDictionary.class]) {
-			parseJSONDictionary(responseObject);
-			[subscriber sendCompleted];
-		}
+            parseJSONDictionary(responseObject);
+            [subscriber sendCompleted];
+        }
         else if (responseObject != nil) {
-			NSString *failureReason = [NSString stringWithFormat:NSLocalizedString(@"Response wasn't an array or dictionary (%@): %@", @""), [responseObject class], responseObject];
-			[subscriber sendError:[self parsingErrorWithFailureReason:failureReason]];
-		}
+            NSString *failureReason = [NSString stringWithFormat:NSLocalizedString(@"Response wasn't an array or dictionary (%@): %@", @""), [responseObject class], responseObject];
+            [subscriber sendError:[self parsingErrorWithFailureReason:failureReason]];
+        }
 
-		return nil;
-	}];
+        return nil;
+    }];
 }
 
 - (NSError *)parsingErrorWithFailureReason:(NSString *)localizedFailureReason
 {
-	NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
-	userInfo[NSLocalizedDescriptionKey] = NSLocalizedString(@"Could not parse the service response.", @"");
+    NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
+    userInfo[NSLocalizedDescriptionKey] = NSLocalizedString(@"Could not parse the service response.", @"");
 
-	if (localizedFailureReason != nil) {
-		userInfo[NSLocalizedFailureReasonErrorKey] = localizedFailureReason;
-	}
+    if (localizedFailureReason != nil) {
+        userInfo[NSLocalizedFailureReasonErrorKey] = localizedFailureReason;
+    }
 
-	return [NSError errorWithDomain:RNClientErrorDomain code:RNClientErrorJSONParsingFailed userInfo:userInfo];
+    return [NSError errorWithDomain:RNClientErrorDomain code:RNClientErrorJSONParsingFailed userInfo:userInfo];
 }
 
 #pragma mark - Error handling
 
 + (NSString *)defaultErrorMessageFromRequestOperation:(AFHTTPRequestOperation *)operation
 {
-	NSParameterAssert(operation != nil);
+    NSParameterAssert(operation != nil);
 
-	NSDictionary *responseDictionary = nil;
-	if ([operation isKindOfClass:AFJSONRequestOperation.class]) {
-		id JSON = [(AFJSONRequestOperation *)operation responseJSON];
-		if ([JSON isKindOfClass:NSDictionary.class]) {
-			responseDictionary = JSON;
-		}
+    NSDictionary *responseDictionary = nil;
+    if ([operation isKindOfClass:AFJSONRequestOperation.class]) {
+        id JSON = [(AFJSONRequestOperation *)operation responseJSON];
+        if ([JSON isKindOfClass:NSDictionary.class]) {
+            responseDictionary = JSON;
+        }
         else {
-			NSLog(@"Unexpected JSON for error response: %@", JSON);
-		}
-	}
+            NSLog(@"Unexpected JSON for error response: %@", JSON);
+        }
+    }
 
-	NSString *errorDescription = responseDictionary[@"message"] ?: operation.error.localizedDescription;
-	if (errorDescription == nil) {
-		if ([operation.error.domain isEqual:NSURLErrorDomain]) {
-			errorDescription = NSLocalizedString(@"There was a problem connecting to the server.", @"");
-		}
+    NSString *errorDescription = responseDictionary[@"message"] ?: operation.error.localizedDescription;
+    if (errorDescription == nil) {
+        if ([operation.error.domain isEqual:NSURLErrorDomain]) {
+            errorDescription = NSLocalizedString(@"There was a problem connecting to the server.", @"");
+        }
         else {
-			errorDescription = NSLocalizedString(@"The universe has collapsed.", @"");
-		}
-	}
+            errorDescription = NSLocalizedString(@"The universe has collapsed.", @"");
+        }
+    }
 
-	NSArray *errorDictionaries = responseDictionary[@"errors"];
-	if ([errorDictionaries isKindOfClass:NSArray.class]) {
-		NSString *errors = [[[errorDictionaries.rac_sequence
+    NSArray *errorDictionaries = responseDictionary[@"errors"];
+    if ([errorDictionaries isKindOfClass:NSArray.class]) {
+        NSString *errors = [[[errorDictionaries.rac_sequence
                               flattenMap:^(NSDictionary *errorDictionary) {
                                   NSString *message = [self errorMessageFromErrorDictionary:errorDictionary];
                                   if (message == nil) {
@@ -215,82 +215,82 @@ NSInteger const RNClientErrorUnsupportedServerScheme = 1006;
                              array]
                             componentsJoinedByString:@"\n"];
 
-		errorDescription = [NSString stringWithFormat:NSLocalizedString(@"%@:\n\n%@", @""), errorDescription, errors];
-	}
+        errorDescription = [NSString stringWithFormat:NSLocalizedString(@"%@:\n\n%@", @""), errorDescription, errors];
+    }
 
-	return errorDescription;
+    return errorDescription;
 }
 
 + (NSString *)errorMessageFromErrorDictionary:(NSDictionary *)errorDictionary
 {
-	NSString *message = errorDictionary[@"message"];
-	NSString *resource = errorDictionary[@"resource"];
-	if (message != nil) {
-		return [NSString stringWithFormat:NSLocalizedString(@"• %@ %@.", @""), resource, message];
-	}
+    NSString *message = errorDictionary[@"message"];
+    NSString *resource = errorDictionary[@"resource"];
+    if (message != nil) {
+        return [NSString stringWithFormat:NSLocalizedString(@"• %@ %@.", @""), resource, message];
+    }
     else {
-		NSString *field = errorDictionary[@"field"];
-		NSString *codeType = errorDictionary[@"code"];
+        NSString *field = errorDictionary[@"field"];
+        NSString *codeType = errorDictionary[@"code"];
 
-		NSString * (^localizedErrorMessage)(NSString *) = ^(NSString *message) {
-			return [NSString stringWithFormat:message, resource, field];
-		};
+        NSString * (^localizedErrorMessage)(NSString *) = ^(NSString *message) {
+            return [NSString stringWithFormat:message, resource, field];
+        };
 
-		NSString *codeString = localizedErrorMessage(@"%@ %@ is missing");
-		if ([codeType isEqual:@"missing"]) {
-			codeString = localizedErrorMessage(NSLocalizedString(@"%@ %@ does not exist", @""));
-		}
+        NSString *codeString = localizedErrorMessage(@"%@ %@ is missing");
+        if ([codeType isEqual:@"missing"]) {
+            codeString = localizedErrorMessage(NSLocalizedString(@"%@ %@ does not exist", @""));
+        }
         else if ([codeType isEqual:@"missing_field"]) {
-			codeString = localizedErrorMessage(NSLocalizedString(@"%@ %@ is missing", @""));
-		}
+            codeString = localizedErrorMessage(NSLocalizedString(@"%@ %@ is missing", @""));
+        }
         else if ([codeType isEqual:@"invalid"]) {
-			codeString = localizedErrorMessage(NSLocalizedString(@"%@ %@ is invalid", @""));
-		}
+            codeString = localizedErrorMessage(NSLocalizedString(@"%@ %@ is invalid", @""));
+        }
         else if ([codeType isEqual:@"already_exists"]) {
-			codeString = localizedErrorMessage(NSLocalizedString(@"%@ %@ already exists", @""));
-		}
+            codeString = localizedErrorMessage(NSLocalizedString(@"%@ %@ already exists", @""));
+        }
 
-		return [NSString stringWithFormat:@"• %@.", codeString];
-	}
+        return [NSString stringWithFormat:@"• %@.", codeString];
+    }
 }
 
 + (NSError *)errorFromRequestOperation:(AFHTTPRequestOperation *)operation
 {
-	NSParameterAssert(operation != nil);
+    NSParameterAssert(operation != nil);
 
-	NSInteger HTTPCode = operation.response.statusCode;
-	NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
-	NSInteger errorCode = RNClientErrorConnectionFailed;
+    NSInteger HTTPCode = operation.response.statusCode;
+    NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
+    NSInteger errorCode = RNClientErrorConnectionFailed;
 
-	userInfo[NSLocalizedDescriptionKey] = [self defaultErrorMessageFromRequestOperation:operation];
+    userInfo[NSLocalizedDescriptionKey] = [self defaultErrorMessageFromRequestOperation:operation];
 
-	switch (HTTPCode) {
-		case 401:
-			errorCode = RNClientErrorAuthenticationFailed;
-			break;
+    switch (HTTPCode) {
+        case 401:
+            errorCode = RNClientErrorAuthenticationFailed;
+            break;
 
-		case 400:
-			errorCode = RNClientErrorBadRequest;
-			break;
+        case 400:
+            errorCode = RNClientErrorBadRequest;
+            break;
 
-		case 403:
-			errorCode = RNClientErrorRequestForbidden;
-			break;
+        case 403:
+            errorCode = RNClientErrorRequestForbidden;
+            break;
 
-		case 422:
-			errorCode = RNClientErrorServiceRequestFailed;
-			break;
-	}
+        case 422:
+            errorCode = RNClientErrorServiceRequestFailed;
+            break;
+    }
 
-	if (operation.userInfo[RNClientErrorRequestStateRedirected] != nil) {
-		errorCode = RNClientErrorUnsupportedServerScheme;
-	}
+    if (operation.userInfo[RNClientErrorRequestStateRedirected] != nil) {
+        errorCode = RNClientErrorUnsupportedServerScheme;
+    }
 
-	userInfo[RNClientErrorHTTPStatusCodeKey] = @(HTTPCode);
-	if (operation.request.URL != nil) userInfo[RNClientErrorRequestURLKey] = operation.request.URL;
-	if (operation.error != nil) userInfo[NSUnderlyingErrorKey] = operation.error;
+    userInfo[RNClientErrorHTTPStatusCodeKey] = @(HTTPCode);
+    if (operation.request.URL != nil) userInfo[RNClientErrorRequestURLKey] = operation.request.URL;
+    if (operation.error != nil) userInfo[NSUnderlyingErrorKey] = operation.error;
 
-	return [NSError errorWithDomain:RNClientErrorDomain code:errorCode userInfo:userInfo];
+    return [NSError errorWithDomain:RNClientErrorDomain code:errorCode userInfo:userInfo];
 }
 
 @end

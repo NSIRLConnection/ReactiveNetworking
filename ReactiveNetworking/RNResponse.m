@@ -19,7 +19,7 @@
 
 - (instancetype)initWithHTTPURLResponse:(NSHTTPURLResponse *)response parsedResult:(id)parsedResult
 {
-	return [super initWithDictionary:@{
+    return [super initWithDictionary:@{
         @keypath(self.parsedResult): parsedResult ?: NSNull.null,
         @keypath(self.HTTPURLResponse): [response copy] ?: NSNull.null,
     } error:NULL];

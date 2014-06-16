@@ -18,13 +18,13 @@
 SpecBegin(RNClient)
 
 void (^stubResponseWithHeaders)(NSString *, NSString *, NSDictionary *) = ^(NSString *path, NSString *responseFilename, NSDictionary *headers) {
-	headers = [headers mtl_dictionaryByAddingEntriesFromDictionary:@{@"Content-Type": @"application/json"}];
-	[OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
-		return [request.URL.path isEqual:path];
+    headers = [headers mtl_dictionaryByAddingEntriesFromDictionary:@{@"Content-Type": @"application/json"}];
+    [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
+        return [request.URL.path isEqual:path];
     } withStubResponse:^OHHTTPStubsResponse *(NSURLRequest *request) {
-		NSURL *fileURL = [[NSBundle bundleForClass:self.class] URLForResource:responseFilename.stringByDeletingPathExtension withExtension:responseFilename.pathExtension];
-		return [OHHTTPStubsResponse responseWithFileAtPath:fileURL.path statusCode:200 headers:headers];
-	}];
+        NSURL *fileURL = [[NSBundle bundleForClass:self.class] URLForResource:responseFilename.stringByDeletingPathExtension withExtension:responseFilename.pathExtension];
+        return [OHHTTPStubsResponse responseWithFileAtPath:fileURL.path statusCode:200 headers:headers];
+    }];
 };
 
 __block RNClient *client;
@@ -59,29 +59,29 @@ describe(@"parsedResponseOfClass", ^{
     it(@"should parse NSArray", ^{
         NSArray *array = [[NSArray alloc] init];
         [[client parsedResponseOfClass:nil fromJSON:array] asynchronousFirstOrDefault:nil success:&success error:&error];
-		expect(success).to.beTruthy();
-		expect(error).to.beNil();
+        expect(success).to.beTruthy();
+        expect(error).to.beNil();
     });
 
     it(@"should parse NSDictionary", ^{
         NSDictionary *dictionary = [[NSDictionary alloc] init];
         [[client parsedResponseOfClass:nil fromJSON:dictionary] asynchronousFirstOrDefault:nil success:&success error:&error];
-		expect(success).to.beTruthy();
-		expect(error).to.beNil();
+        expect(success).to.beTruthy();
+        expect(error).to.beNil();
     });
 
     it(@"should not parse NSObject", ^{
         NSObject *object = [[NSObject alloc] init];
         [[client parsedResponseOfClass:nil fromJSON:object] asynchronousFirstOrDefault:nil success:&success error:&error];
-		expect(success).to.beFalsy();
-		expect(error).notTo.beNil();
+        expect(success).to.beFalsy();
+        expect(error).notTo.beNil();
     });
 
     it(@"should pass NSDictionary through", ^{
         NSDictionary *dictionary = @{@"foo": @"bar"};
         NSDictionary *result = [[client parsedResponseOfClass:nil fromJSON:dictionary] asynchronousFirstOrDefault:nil success:&success error:&error];
-		expect(success).to.beTruthy();
-		expect(error).to.beNil();
+        expect(success).to.beTruthy();
+        expect(error).to.beNil();
         expect(result).to.equal(dictionary);
     });
 
@@ -101,8 +101,8 @@ describe(@"parsedResponseOfClass", ^{
     it(@"should return the parsed object", ^{
         NSDictionary *dictionary = @{@"id": @(42)};
         RNObject *result = [[client parsedResponseOfClass:RNObject.class fromJSON:dictionary] asynchronousFirstOrDefault:nil success:&success error:&error];
-		expect(success).to.beTruthy();
-		expect(error).to.beNil();
+        expect(success).to.beTruthy();
+        expect(error).to.beNil();
         expect(result.objectID).to.equal(@"42");
     });
 });
@@ -119,28 +119,28 @@ describe(@"enqueueRequest", ^{
     it(@"should return the object", ^{
         stubResponseWithHeaders(@"/object", @"object.json", @{});
 
-		NSURLRequest *request = [client requestWithMethod:@"GET" path:@"object" parameters:nil];
-		RACSignal *result = [client enqueueRequest:request resultClass:RNObject.class keyPaths:nil];
-		RNResponse *response = [result asynchronousFirstOrDefault:nil success:&success error:&error];
+        NSURLRequest *request = [client requestWithMethod:@"GET" path:@"object" parameters:nil];
+        RACSignal *result = [client enqueueRequest:request resultClass:RNObject.class keyPaths:nil];
+        RNResponse *response = [result asynchronousFirstOrDefault:nil success:&success error:&error];
         RNObject *object = response.parsedResult;
 
-		expect(response).notTo.beNil();
-		expect(success).to.beTruthy();
-		expect(error).to.beNil();
-		expect(object.objectID).to.equal(@"1234");
+        expect(response).notTo.beNil();
+        expect(success).to.beTruthy();
+        expect(error).to.beNil();
+        expect(object.objectID).to.equal(@"1234");
     });
 
     it(@"should traverse the keypaths", ^{
         stubResponseWithHeaders(@"/keypaths", @"keypaths.json", @{});
-		NSURLRequest *request = [client requestWithMethod:@"GET" path:@"keypaths" parameters:nil];
-		RACSignal *result = [client enqueueRequest:request resultClass:RNObject.class keyPaths:@[@"{http://www.example.com/schema/thing/v1}things", @"value.thing"]];
-		RNResponse *response = [result asynchronousFirstOrDefault:nil success:&success error:&error];
+        NSURLRequest *request = [client requestWithMethod:@"GET" path:@"keypaths" parameters:nil];
+        RACSignal *result = [client enqueueRequest:request resultClass:RNObject.class keyPaths:@[@"{http://www.example.com/schema/thing/v1}things", @"value.thing"]];
+        RNResponse *response = [result asynchronousFirstOrDefault:nil success:&success error:&error];
         RNObject *object = response.parsedResult;
 
-		expect(response).notTo.beNil();
-		expect(success).to.beTruthy();
-		expect(error).to.beNil();
-		expect(object.objectID).to.equal(@"5678");
+        expect(response).notTo.beNil();
+        expect(success).to.beTruthy();
+        expect(error).to.beNil();
+        expect(object.objectID).to.equal(@"5678");
     });
 });
 
