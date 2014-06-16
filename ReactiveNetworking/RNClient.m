@@ -55,7 +55,7 @@ NSInteger const RNClientErrorUnsupportedServerScheme = 1006;
 			@strongify(operation);
 			if (redirectResponse == nil) return currentRequest;
 
-			// Append OCTClientErrorRequestStateRedirected to the current
+			// Append RNClientErrorRequestStateRedirected to the current
 			// operation's userInfo when redirecting to a different URL scheme
 			NSString *currentHost = currentRequest.URL.host;
 			NSString *originalHost = originalRequest.URL.host;
@@ -93,7 +93,7 @@ NSInteger const RNClientErrorUnsupportedServerScheme = 1006;
                           parsedResponseOfClass:resultClass fromJSON:responseObject]
                          map:^(id parsedResult) {
                              RNResponse *parsedResponse = [[RNResponse alloc] initWithHTTPURLResponse:response parsedResult:parsedResult];
-                             NSAssert(parsedResponse != nil, @"Could not create OCTResponse with response %@ and parsedResult %@", response, parsedResult);
+                             NSAssert(parsedResponse != nil, @"Could not create RNResponse with response %@ and parsedResult %@", response, parsedResult);
 
                              return parsedResponse;
                          }];
