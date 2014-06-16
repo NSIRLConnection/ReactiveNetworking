@@ -84,13 +84,17 @@ NSInteger const RNClientErrorUnsupportedServerScheme = 1006;
             setNameWithFormat:@"-enqueueRequest: %@", request];
 }
 
-- (RACSignal *)enqueueRequest:(NSURLRequest *)request resultClass:(Class)resultClass
+- (RACSignal *)enqueueRequest:(NSURLRequest *)request resultClass:(Class)resultClass keyPaths:(NSArray *)keyPaths
 {
 	return [[[self
               enqueueRequest:request]
              reduceEach:^(NSHTTPURLResponse *response, id responseObject) {
+                 __block id wantedObject = responseObject;
+                 [keyPaths enumerateObjectsUsingBlock:^(NSString *keyPath, NSUInteger idx, BOOL *stop) {
+                     wantedObject = [wantedObject valueForKeyPath:keyPath];
+                 }];
                  return [[self
-                          parsedResponseOfClass:resultClass fromJSON:responseObject]
+                          parsedResponseOfClass:resultClass fromJSON:wantedObject]
                          map:^(id parsedResult) {
                              RNResponse *parsedResponse = [[RNResponse alloc] initWithHTTPURLResponse:response parsedResult:parsedResult];
                              NSAssert(parsedResponse != nil, @"Could not create RNResponse with response %@ and parsedResult %@", response, parsedResult);

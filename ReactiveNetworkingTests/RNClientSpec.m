@@ -120,7 +120,7 @@ describe(@"enqueueRequest", ^{
         stubResponseWithHeaders(@"/object", @"object.json", @{});
 
 		NSURLRequest *request = [client requestWithMethod:@"GET" path:@"object" parameters:nil];
-		RACSignal *result = [client enqueueRequest:request resultClass:RNObject.class];
+		RACSignal *result = [client enqueueRequest:request resultClass:RNObject.class keyPaths:nil];
 		RNResponse *response = [result asynchronousFirstOrDefault:nil success:&success error:&error];
         RNObject *object = response.parsedResult;
 
@@ -128,6 +128,19 @@ describe(@"enqueueRequest", ^{
 		expect(success).to.beTruthy();
 		expect(error).to.beNil();
 		expect(object.objectID).to.equal(@"1234");
+    });
+
+    it(@"should traverse the keypaths", ^{
+        stubResponseWithHeaders(@"/keypaths", @"keypaths.json", @{});
+		NSURLRequest *request = [client requestWithMethod:@"GET" path:@"keypaths" parameters:nil];
+		RACSignal *result = [client enqueueRequest:request resultClass:RNObject.class keyPaths:@[@"{http://www.example.com/schema/thing/v1}things", @"value.thing"]];
+		RNResponse *response = [result asynchronousFirstOrDefault:nil success:&success error:&error];
+        RNObject *object = response.parsedResult;
+
+		expect(response).notTo.beNil();
+		expect(success).to.beTruthy();
+		expect(error).to.beNil();
+		expect(object.objectID).to.equal(@"5678");
     });
 });
 

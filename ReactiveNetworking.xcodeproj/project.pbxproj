@@ -12,6 +12,7 @@
 		3EC1A5A4194CFD2700D042AB /* RNClientSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC1A5A2194CFD2700D042AB /* RNClientSpec.m */; };
 		3EC1A5AA194DCBF900D042AB /* object.json in Resources */ = {isa = PBXBuildFile; fileRef = 3EC1A5A9194DCBF900D042AB /* object.json */; };
 		3EC1A5AB194DCBF900D042AB /* object.json in Resources */ = {isa = PBXBuildFile; fileRef = 3EC1A5A9194DCBF900D042AB /* object.json */; };
+		3EE6E475194F8F4000957903 /* keypaths.json in Resources */ = {isa = PBXBuildFile; fileRef = 3EE6E474194F8EC900957903 /* keypaths.json */; };
 		3EF40022194CF33700B163B6 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EF40021194CF33700B163B6 /* Cocoa.framework */; };
 		3EF40036194CF33800B163B6 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EF4FFC0194C271A00B163B6 /* XCTest.framework */; };
 		3EF40037194CF33800B163B6 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EF40021194CF33700B163B6 /* Cocoa.framework */; };
@@ -59,6 +60,7 @@
 		3EC1A5A2194CFD2700D042AB /* RNClientSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNClientSpec.m; sourceTree = "<group>"; };
 		3EC1A5A5194CFD7E00D042AB /* ReactiveNetworkingTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ReactiveNetworkingTests-Prefix.pch"; sourceTree = "<group>"; };
 		3EC1A5A9194DCBF900D042AB /* object.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = object.json; sourceTree = "<group>"; };
+		3EE6E474194F8EC900957903 /* keypaths.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = keypaths.json; sourceTree = "<group>"; };
 		3EF40020194CF33700B163B6 /* ReactiveNetworking Mac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "ReactiveNetworking Mac.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EF40021194CF33700B163B6 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
 		3EF40024194CF33800B163B6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -139,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				3EC1A5A9194DCBF900D042AB /* object.json */,
+				3EE6E474194F8EC900957903 /* keypaths.json */,
 			);
 			name = Stubs;
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3EE6E475194F8F4000957903 /* keypaths.json in Resources */,
 				3EC1A5AB194DCBF900D042AB /* object.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,0 +1,9 @@
+{
+    "{http://www.example.com/schema/thing/v1}things": {
+        "value": {
+            "thing": {
+                "id": 5678
+            }
+        }
+    }
+}
