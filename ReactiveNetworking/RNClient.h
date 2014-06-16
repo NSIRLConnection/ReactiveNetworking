@@ -8,6 +8,8 @@
 
 #import <AFNetworking/AFNetworking.h>
 
+@class RACSignal;
+
 // The domain for all errors originating in RNClient.
 extern NSString * const RNClientErrorDomain;
 
