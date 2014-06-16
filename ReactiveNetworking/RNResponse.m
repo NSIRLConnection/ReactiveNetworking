@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 Johannes Plunien. All rights reserved.
 //
 
+#import <Mantle/EXTKeyPathCoding.h>
 #import "RNResponse.h"
-#import "EXTKeyPathCoding.h"
 
 @interface RNResponse ()
 
