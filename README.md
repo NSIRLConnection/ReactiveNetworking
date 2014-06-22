@@ -9,6 +9,8 @@ Most of the code is shamelessly copied from [Github's OctoKit](https://github.co
 
 # Usage
 
+## API response
+
 Let's assume an API, that returns for `GET /users/plu` the following
 JSON response:
 
@@ -22,7 +24,7 @@ JSON response:
 }
 ```
 
-The model the user object:
+## Model object
 
 ```objc
 @interface RNReadmeUser : RNObject
@@ -44,7 +46,7 @@ The model the user object:
 @end
 ```
 
-The API client:
+## API client
 
 ```objc
 @interface RNReadmeClient : RNClient
@@ -78,7 +80,7 @@ The API client:
 @end
 ```
 
-How to use it:
+## How to use it
 
 ```objc
 RNReadmeClient *client = [[RNReadmeClient alloc] initWithBaseURL:nil];
