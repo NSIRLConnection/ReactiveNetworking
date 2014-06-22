@@ -12,7 +12,7 @@ PODS:
   - ReactiveCocoa/no-arc (2.3.1)
   - ReactiveCocoa/UI (2.3.1):
     - ReactiveCocoa/Core
-  - ReactiveNetworking (0.9.0):
+  - ReactiveNetworking (1.0.0):
     - AFNetworking (~> 1.0)
     - Mantle (~> 1.0)
     - ReactiveCocoa (~> 2.0)
@@ -35,7 +35,7 @@ SPEC CHECKSUMS:
   Mantle: c67a7e45e14196ed42b2a7cbb98ff6a9920e6b92
   OHHTTPStubs: c1c2007839687eaf9b80f061ce84440515080ebb
   ReactiveCocoa: dca75777b9d18990c8714a3a6f2149f29b4d1462
-  ReactiveNetworking: 318760dde7a54a45b92c5344ad3c06e610759157
+  ReactiveNetworking: 9ef7b4cf697a8eb59c398f87557005974f6d3598
   Specta: 9141310f46b1f68b676650ff2854e1ed0b74163a
 
 COCOAPODS: 0.33.1
