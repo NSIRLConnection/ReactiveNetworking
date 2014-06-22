@@ -3,5 +3,7 @@ rvm: 2.0.0
 install:
   - bundle install
   - bundle exec pod install
+before_script:
+  - export LANG=en_US.UTF-8
 script:
   - bundle exec rake test
