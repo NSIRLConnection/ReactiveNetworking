@@ -8,9 +8,9 @@
 
 #import <ReactiveCocoa/RACEXTScope.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
-#import "RNClient.h"
-#import "RNObject.h"
-#import "RNResponse.h"
+#import <ReactiveNetworking/RNClient.h>
+#import <ReactiveNetworking/RNObject.h>
+#import <ReactiveNetworking/RNResponse.h>
 
 NSString * const RNClientErrorDomain = @"RNClientErrorDomain";
 NSString * const RNClientErrorRequestStateRedirected = @"RNClientErrorRequestStateRedirected";
