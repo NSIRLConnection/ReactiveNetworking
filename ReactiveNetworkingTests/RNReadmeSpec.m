@@ -89,11 +89,6 @@ describe(@"the example in the readme should work", ^{
         expect(user.login).to.equal(@"plu");
         expect(user.name).to.equal(@"Johannes Plunien");
         expect(user.objectID).to.equal(@"42");
-
-        // This is just for copy & paste into the readme
-        [[client fetchUser:@"plu"] subscribeNext:^(RNResponse *response) {
-            NSLog(@"%@", response.parsedResult);
-        }];
     });
 });
 
