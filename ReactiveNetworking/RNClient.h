@@ -50,8 +50,13 @@ extern const NSInteger RNClientErrorUnsupportedServerScheme;
 
 @interface RNClient : AFHTTPClient
 
+// Inject a custom subclass of RNResponse as responseClass.
 - (instancetype)initWithBaseURL:(NSURL *)url responseClass:(Class)responseClass;
+
+// Subclasses should use this method to enqueue requests.
 - (RACSignal *)enqueueRequest:(NSURLRequest *)request resultClass:(Class)resultClass keyPaths:(NSArray *)keyPaths;
+
+// Subclasses can override this method to customize error response parsing.
 + (NSString *)errorMessageFromRequestOperation:(AFHTTPRequestOperation *)operation;
 
 @end
