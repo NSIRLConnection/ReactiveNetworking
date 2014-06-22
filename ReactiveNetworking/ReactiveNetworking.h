@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Johannes Plunien. All rights reserved.
 //
 
+#import <ReactiveCocoa/ReactiveCocoa.h>
+
 #import <ReactiveNetworking/RNClient.h>
 #import <ReactiveNetworking/RNObject.h>
 #import <ReactiveNetworking/RNResponse.h>
