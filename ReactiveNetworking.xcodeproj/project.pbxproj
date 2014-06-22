@@ -29,6 +29,14 @@
 		6769DE4819570283003A7A45 /* readme.json in Resources */ = {isa = PBXBuildFile; fileRef = 6769DE4619570283003A7A45 /* readme.json */; };
 		6772EDB6195770A6002300D7 /* error.json in Resources */ = {isa = PBXBuildFile; fileRef = 6772EDB5195770A6002300D7 /* error.json */; };
 		6772EDB7195770A6002300D7 /* error.json in Resources */ = {isa = PBXBuildFile; fileRef = 6772EDB5195770A6002300D7 /* error.json */; };
+		6772EDBB1957743B002300D7 /* TestClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 6772EDBA1957743B002300D7 /* TestClient.m */; };
+		6772EDBC1957743B002300D7 /* TestClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 6772EDBA1957743B002300D7 /* TestClient.m */; };
+		6772EDBF19577458002300D7 /* TestResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 6772EDBE19577458002300D7 /* TestResponse.m */; };
+		6772EDC019577458002300D7 /* TestResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 6772EDBE19577458002300D7 /* TestResponse.m */; };
+		6772EDC3195774EB002300D7 /* ReadmeClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 6772EDC2195774EB002300D7 /* ReadmeClient.m */; };
+		6772EDC4195774EB002300D7 /* ReadmeClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 6772EDC2195774EB002300D7 /* ReadmeClient.m */; };
+		6772EDC719577535002300D7 /* ReadmeUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6772EDC619577535002300D7 /* ReadmeUser.m */; };
+		6772EDC819577535002300D7 /* ReadmeUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6772EDC619577535002300D7 /* ReadmeUser.m */; };
 		A7E3B11D6EA5428A86DD4B14 /* libPods-osx.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 594F044FA91F41DC9C2B6824 /* libPods-osx.a */; };
 /* End PBXBuildFile section */
 
@@ -94,6 +102,14 @@
 		6769DE431956FFC1003A7A45 /* RNReadmeSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNReadmeSpec.m; sourceTree = "<group>"; };
 		6769DE4619570283003A7A45 /* readme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = readme.json; sourceTree = "<group>"; };
 		6772EDB5195770A6002300D7 /* error.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = error.json; sourceTree = "<group>"; };
+		6772EDB91957743B002300D7 /* TestClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestClient.h; sourceTree = "<group>"; };
+		6772EDBA1957743B002300D7 /* TestClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestClient.m; sourceTree = "<group>"; };
+		6772EDBD19577458002300D7 /* TestResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestResponse.h; sourceTree = "<group>"; };
+		6772EDBE19577458002300D7 /* TestResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestResponse.m; sourceTree = "<group>"; };
+		6772EDC1195774EB002300D7 /* ReadmeClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadmeClient.h; sourceTree = "<group>"; };
+		6772EDC2195774EB002300D7 /* ReadmeClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadmeClient.m; sourceTree = "<group>"; };
+		6772EDC519577535002300D7 /* ReadmeUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadmeUser.h; sourceTree = "<group>"; };
+		6772EDC619577535002300D7 /* ReadmeUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadmeUser.m; sourceTree = "<group>"; };
 		92C618DDB7164A3DAB345F4D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC299B3EAB7A4C03BB0F7BC3 /* libPods-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -229,6 +245,7 @@
 		3EF4FFC8194C271A00B163B6 /* ReactiveNetworkingTests */ = {
 			isa = PBXGroup;
 			children = (
+				6772EDB81957741E002300D7 /* Subclasses */,
 				3EC1A5A7194CFDD700D042AB /* Specs */,
 				3EF4FFC9194C271A00B163B6 /* Supporting Files */,
 			);
@@ -264,6 +281,21 @@
 				3EF4FFE0194C3E0600B163B6 /* RNResponse.m */,
 			);
 			name = "Base Models";
+			sourceTree = "<group>";
+		};
+		6772EDB81957741E002300D7 /* Subclasses */ = {
+			isa = PBXGroup;
+			children = (
+				6772EDC1195774EB002300D7 /* ReadmeClient.h */,
+				6772EDC2195774EB002300D7 /* ReadmeClient.m */,
+				6772EDC519577535002300D7 /* ReadmeUser.h */,
+				6772EDC619577535002300D7 /* ReadmeUser.m */,
+				6772EDB91957743B002300D7 /* TestClient.h */,
+				6772EDBA1957743B002300D7 /* TestClient.m */,
+				6772EDBD19577458002300D7 /* TestResponse.h */,
+				6772EDBE19577458002300D7 /* TestResponse.m */,
+			);
+			name = Subclasses;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -464,6 +496,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6772EDC819577535002300D7 /* ReadmeUser.m in Sources */,
+				6772EDC4195774EB002300D7 /* ReadmeClient.m in Sources */,
+				6772EDC019577458002300D7 /* TestResponse.m in Sources */,
+				6772EDBC1957743B002300D7 /* TestClient.m in Sources */,
 				6769DE451956FFC1003A7A45 /* RNReadmeSpec.m in Sources */,
 				3EC1A5A4194CFD2700D042AB /* RNClientSpec.m in Sources */,
 			);
@@ -480,6 +516,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6772EDC719577535002300D7 /* ReadmeUser.m in Sources */,
+				6772EDC3195774EB002300D7 /* ReadmeClient.m in Sources */,
+				6772EDBF19577458002300D7 /* TestResponse.m in Sources */,
+				6772EDBB1957743B002300D7 /* TestClient.m in Sources */,
 				6769DE441956FFC1003A7A45 /* RNReadmeSpec.m in Sources */,
 				3EC1A5A3194CFD2700D042AB /* RNClientSpec.m in Sources */,
 			);

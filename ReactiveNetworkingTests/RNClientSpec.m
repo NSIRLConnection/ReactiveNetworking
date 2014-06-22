@@ -7,35 +7,8 @@
 //
 
 #import <ReactiveNetworking/ReactiveNetworking.h>
-
-@interface Response : RNResponse
-@end
-@implementation Response;
-@end
-
-@interface Client : RNClient
-@end
-@implementation Client;
-+ (NSString *)errorMessageFromRequestOperation:(AFHTTPRequestOperation *)operation resultClass:(Class)resultClass
-{
-    NSParameterAssert(operation != nil);
-    NSDictionary *responseDictionary = nil;
-    if ([operation isKindOfClass:AFJSONRequestOperation.class]) {
-        id JSON = [(AFJSONRequestOperation *)operation responseJSON];
-        if ([JSON isKindOfClass:NSDictionary.class]) {
-            responseDictionary = JSON;
-        }
-    }
-    return [responseDictionary valueForKey:@"message"];
-}
-@end
-
-@interface RNClient (Tests)
-
-- (RACSignal *)parsedResponseOfClass:(Class)resultClass fromJSON:(id)responseObject;
-- (NSError *)parsingErrorWithFailureReason:(NSString *)localizedFailureReason;
-
-@end
+#import "TestClient.h"
+#import "TestResponse.h"
 
 SpecBegin(RNClient)
 
@@ -49,12 +22,12 @@ void (^stubResponseWithHeaders)(NSString *, NSString *, NSDictionary *) = ^(NSSt
     }];
 };
 
-__block Client *client;
+__block TestClient *client;
 
 beforeEach(^{
     [OHHTTPStubs removeAllStubs];
-    client = [[Client alloc] initWithBaseURL:[NSURL URLWithString:@"https://api.github.com"]
-                               responseClass:Response.class];
+    client = [[TestClient alloc] initWithBaseURL:[NSURL URLWithString:@"https://api.github.com"]
+                                   responseClass:TestResponse.class];
     [client registerHTTPOperationClass:AFJSONRequestOperation.class];
     [client setDefaultHeader:@"Accept" value:@"application/json"];
     expect(client).notTo.beNil();
@@ -167,10 +140,10 @@ describe(@"enqueueRequest", ^{
 
         NSURLRequest *request = [client requestWithMethod:@"GET" path:@"object" parameters:nil];
         RACSignal *result = [client enqueueRequest:request resultClass:RNObject.class keyPaths:nil];
-        Response *response = [result asynchronousFirstOrDefault:nil success:&success error:&error];
+        TestResponse *response = [result asynchronousFirstOrDefault:nil success:&success error:&error];
         RNObject *object = response.parsedResult;
 
-        expect(response).to.beKindOf(Response.class);
+        expect(response).to.beKindOf(TestResponse.class);
         expect(success).to.beTruthy();
         expect(error).to.beNil();
         expect(object.objectID).to.equal(@"1234");
@@ -180,10 +153,10 @@ describe(@"enqueueRequest", ^{
         stubResponseWithHeaders(@"/keypaths", @"keypaths.json", @{});
         NSURLRequest *request = [client requestWithMethod:@"GET" path:@"keypaths" parameters:nil];
         RACSignal *result = [client enqueueRequest:request resultClass:RNObject.class keyPaths:@[@"{http://www.example.com/schema/thing/v1}things", @"value.thing"]];
-        Response *response = [result asynchronousFirstOrDefault:nil success:&success error:&error];
+        TestResponse *response = [result asynchronousFirstOrDefault:nil success:&success error:&error];
         RNObject *object = response.parsedResult;
 
-        expect(response).to.beKindOf(Response.class);
+        expect(response).to.beKindOf(TestResponse.class);
         expect(success).to.beTruthy();
         expect(error).to.beNil();
         expect(object.objectID).to.equal(@"5678");
@@ -209,7 +182,7 @@ describe(@"errorMessageFromRequestOperation", ^{
 
         NSURLRequest *request = [client requestWithMethod:@"GET" path:@"whatever" parameters:nil];
         RACSignal *result = [client enqueueRequest:request resultClass:RNObject.class keyPaths:nil];
-        Response *response = [result asynchronousFirstOrDefault:nil success:&success error:&error];
+        TestResponse *response = [result asynchronousFirstOrDefault:nil success:&success error:&error];
 
         expect(response).to.beNil();
         expect(success).to.beFalsy();
