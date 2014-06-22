@@ -20,8 +20,8 @@ JSON response:
 {
     "user": {
         "id": 42,
-        "login": "plu",
-        "name": "Johannes Plunien"
+        "login_name": "plu",
+        "display_name": "Johannes Plunien"
     }
 }
 ```
@@ -40,8 +40,8 @@ JSON response:
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
-    NSDictionary *mapping = @{@"login": @"login",
-                              @"name": @"name"};
+    NSDictionary *mapping = @{@"login": @"login_name",
+                              @"name": @"display_name"};
     return [super.JSONKeyPathsByPropertyKey mtl_dictionaryByAddingEntriesFromDictionary:mapping];
 }
 

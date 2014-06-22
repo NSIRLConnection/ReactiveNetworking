@@ -21,8 +21,8 @@
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
-    NSDictionary *mapping = @{@"login": @"login",
-                              @"name": @"name"};
+    NSDictionary *mapping = @{@"login": @"login_name",
+                              @"name": @"display_name"};
 	return [super.JSONKeyPathsByPropertyKey mtl_dictionaryByAddingEntriesFromDictionary:mapping];
 }
 
