@@ -5,6 +5,7 @@ Pod::Spec.new do |s|
   s.summary  = 'Mixes the great AFNetworking with ReactiveCocoa.'
   s.homepage = 'https://github.com/plu/ReactiveNetworking'
   s.authors  = { 'Johannes Plunien' => 'plu@pqpq.de' }
+  s.social_media_url = 'https://twitter.com/plutooth'
   s.source   = { :git => 'https://github.com/plu/ReactiveNetworking.git', :tag => s.version.to_s, :submodules => true }
   s.requires_arc = true
 
