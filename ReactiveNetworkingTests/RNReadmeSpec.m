@@ -12,7 +12,7 @@
 
 SpecBegin(ReadmeClient)
 
-describe(@"the example in the readme should work", ^{
+describe(@"the example in the readme", ^{
     __block BOOL success;
     __block NSError *error;
 
