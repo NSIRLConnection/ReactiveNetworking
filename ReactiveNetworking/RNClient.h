@@ -52,5 +52,6 @@ extern const NSInteger RNClientErrorUnsupportedServerScheme;
 
 - (instancetype)initWithBaseURL:(NSURL *)url responseClass:(Class)responseClass;
 - (RACSignal *)enqueueRequest:(NSURLRequest *)request resultClass:(Class)resultClass keyPaths:(NSArray *)keyPaths;
++ (NSString *)errorMessageFromRequestOperation:(AFHTTPRequestOperation *)operation;
 
 @end
