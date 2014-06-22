@@ -27,14 +27,14 @@ JSON response:
 ## Model object
 
 ```objc
-@interface RNReadmeUser : RNObject
+@interface ReadmeUser : RNObject
 
 @property (nonatomic, copy, readonly) NSString *login;
 @property (nonatomic, copy, readonly) NSString *name;
 
 @end
 
-@implementation RNReadmeUser
+@implementation ReadmeUser
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
@@ -44,18 +44,18 @@ JSON response:
 }
 
 @end
+
+@interface ReadmeClient : RNClient
+
+- (RACSignal *)fetchUser:(NSString *)username;
+
+@end
 ```
 
 ## API client
 
 ```objc
-@interface RNReadmeClient : RNClient
-
-- (RACSignal *)fetchUser:(NSString *)username;
-
-@end
-
-@implementation RNReadmeClient
+@implementation ReadmeClient
 
 - (instancetype)initWithBaseURL:(NSURL *)url
 {
@@ -73,7 +73,7 @@ JSON response:
     NSString *path = [NSString stringWithFormat:@"/users/%@", username];
     NSURLRequest *request = [self requestWithMethod:@"GET" path:path parameters:nil];
     return [self enqueueRequest:request
-                    resultClass:RNReadmeUser.class
+                    resultClass:ReadmeUser.class
                        keyPaths:@[@"user"]];
 }
 
@@ -83,7 +83,7 @@ JSON response:
 ## How to use it
 
 ```objc
-RNReadmeClient *client = [[RNReadmeClient alloc] initWithBaseURL:nil];
+ReadmeClient *client = [[ReadmeClient alloc] initWithBaseURL:nil];
 [[client fetchUser:@"plu"] subscribeNext:^(RNResponse *response) {
     NSLog(@"%@", response.parsedResult);
 }];
@@ -92,7 +92,7 @@ RNReadmeClient *client = [[RNReadmeClient alloc] initWithBaseURL:nil];
 It will log something like:
 
 ```
-<RNReadmeUser: 0x10052a140> {
+<ReadmeUser: 0x10052a140> {
     login = plu;
     name = "Johannes Plunien";
     objectID = 42;

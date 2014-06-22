@@ -8,14 +8,16 @@
 
 #import <ReactiveNetworking/ReactiveNetworking.h>
 
-@interface RNReadmeUser : RNObject
+#pragma mark - Model object
+
+@interface ReadmeUser : RNObject
 
 @property (nonatomic, copy, readonly) NSString *login;
 @property (nonatomic, copy, readonly) NSString *name;
 
 @end
 
-@implementation RNReadmeUser
+@implementation ReadmeUser
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
@@ -26,13 +28,15 @@
 
 @end
 
-@interface RNReadmeClient : RNClient
+@interface ReadmeClient : RNClient
 
 - (RACSignal *)fetchUser:(NSString *)username;
 
 @end
 
-@implementation RNReadmeClient
+#pragma mark - API client
+
+@implementation ReadmeClient
 
 - (instancetype)initWithBaseURL:(NSURL *)url
 {
@@ -50,13 +54,13 @@
     NSString *path = [NSString stringWithFormat:@"/users/%@", username];
 	NSURLRequest *request = [self requestWithMethod:@"GET" path:path parameters:nil];
 	return [self enqueueRequest:request
-                    resultClass:RNReadmeUser.class
+                    resultClass:ReadmeUser.class
                        keyPaths:@[@"user"]];
 }
 
 @end
 
-SpecBegin(RNReadmeClient)
+SpecBegin(ReadmeClient)
 
 describe(@"the example in the readme should work", ^{
     __block BOOL success;
@@ -75,13 +79,13 @@ describe(@"the example in the readme should work", ^{
             return [OHHTTPStubsResponse responseWithFileAtPath:fileURL.path statusCode:200 headers:@{@"Content-Type": @"application/json"}];
         }];
 
-        RNReadmeClient *client = [[RNReadmeClient alloc] initWithBaseURL:nil];
+        ReadmeClient *client = [[ReadmeClient alloc] initWithBaseURL:nil];
         expect(client).notTo.beNil();
         expect(client.baseURL).to.equal([NSURL URLWithString:@"https://api.example.com"]);
 
         RACSignal *result = [client fetchUser:@"plu"];
         RNResponse *response = [result asynchronousFirstOrDefault:nil success:&success error:&error];
-        RNReadmeUser *user = response.parsedResult;
+        ReadmeUser *user = response.parsedResult;
 
         expect(response).notTo.beNil();
         expect(success).to.beTruthy();
