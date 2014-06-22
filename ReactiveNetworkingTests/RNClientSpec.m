@@ -16,6 +16,18 @@
 @interface Client : RNClient
 @end
 @implementation Client;
++ (NSString *)errorMessageFromRequestOperation:(AFHTTPRequestOperation *)operation resultClass:(Class)resultClass
+{
+    NSParameterAssert(operation != nil);
+    NSDictionary *responseDictionary = nil;
+    if ([operation isKindOfClass:AFJSONRequestOperation.class]) {
+        id JSON = [(AFJSONRequestOperation *)operation responseJSON];
+        if ([JSON isKindOfClass:NSDictionary.class]) {
+            responseDictionary = JSON;
+        }
+    }
+    return [responseDictionary valueForKey:@"message"];
+}
 @end
 
 @interface RNClient (Tests)
@@ -175,6 +187,40 @@ describe(@"enqueueRequest", ^{
         expect(success).to.beTruthy();
         expect(error).to.beNil();
         expect(object.objectID).to.equal(@"5678");
+    });
+});
+
+describe(@"errorMessageFromRequestOperation", ^{
+    __block BOOL success;
+    __block NSError *error;
+
+    beforeEach(^{
+        success = NO;
+        error = nil;
+    });
+
+    it(@"should parse the error message", ^{
+        [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
+            return YES;
+        } withStubResponse:^OHHTTPStubsResponse *(NSURLRequest *request) {
+            NSURL *fileURL = [[NSBundle bundleForClass:self.class] URLForResource:@"error" withExtension:@"json"];
+            return [OHHTTPStubsResponse responseWithFileAtPath:fileURL.path statusCode:401 headers:nil];
+        }];
+
+        NSURLRequest *request = [client requestWithMethod:@"GET" path:@"whatever" parameters:nil];
+        RACSignal *result = [client enqueueRequest:request resultClass:RNObject.class keyPaths:nil];
+        Response *response = [result asynchronousFirstOrDefault:nil success:&success error:&error];
+
+        expect(response).to.beNil();
+        expect(success).to.beFalsy();
+        expect(error).notTo.beNil();
+
+        expect(error.domain).to.equal(RNClientErrorDomain);
+        expect(error.code).to.equal(RNClientErrorAuthenticationFailed);
+        expect(error.localizedDescription).to.equal(@"The world is down.");
+        expect(error.userInfo[RNClientErrorHTTPStatusCodeKey]).to.equal(401);
+        expect(error.userInfo[RNClientErrorRequestURLKey]).to.equal([NSURL URLWithString:@"https://api.github.com/whatever"]);
+        expect(error.userInfo[NSUnderlyingErrorKey]).notTo.beNil();
     });
 });
 
