@@ -51,7 +51,7 @@ NSInteger const RNClientErrorUnsupportedServerScheme = 1006;
     return self;
 }
 
-- (RACSignal *)enqueueRequest:(NSURLRequest *)request
+- (RACSignal *)enqueueRequest:(NSURLRequest *)request resultClass:(Class)resultClass keyPaths:(NSArray *)keyPaths
 {
     NSURLRequest *originalRequest = [request copy];
     RACSignal *signal = [RACSignal createSignal:^(id<RACSubscriber> subscriber) {
@@ -66,7 +66,7 @@ NSInteger const RNClientErrorUnsupportedServerScheme = 1006;
                return:RACTuplePack(operation.response, responseObject)]
              subscribe:subscriber];
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            [subscriber sendError:[self.class errorFromRequestOperation:operation]];
+            [subscriber sendError:[self.class errorFromRequestOperation:operation resultClass:(Class)resultClass]];
         }];
 
         operation.successCallbackQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
@@ -79,15 +79,7 @@ NSInteger const RNClientErrorUnsupportedServerScheme = 1006;
         }];
     }];
 
-    return [[signal
-             replayLazily]
-            setNameWithFormat:@"-enqueueRequest: %@", request];
-}
-
-- (RACSignal *)enqueueRequest:(NSURLRequest *)request resultClass:(Class)resultClass keyPaths:(NSArray *)keyPaths
-{
-    return [[[self
-              enqueueRequest:request]
+    return [[[[signal replayLazily] setNameWithFormat:@"-enqueueRequest: %@", request]
              reduceEach:^(NSHTTPURLResponse *response, id responseObject) {
                  __block id wantedObject = responseObject;
                  [keyPaths enumerateObjectsUsingBlock:^(NSString *keyPath, NSUInteger idx, BOOL *stop) {
@@ -176,13 +168,13 @@ NSInteger const RNClientErrorUnsupportedServerScheme = 1006;
 
 #pragma mark - Error handling
 
-+ (NSString *)errorMessageFromRequestOperation:(AFHTTPRequestOperation *)operation
++ (NSString *)errorMessageFromRequestOperation:(AFHTTPRequestOperation *)operation resultClass:(Class)resultClass
 {
     NSParameterAssert(operation != nil);
     return operation.error.localizedDescription;
 }
 
-+ (NSError *)errorFromRequestOperation:(AFHTTPRequestOperation *)operation
++ (NSError *)errorFromRequestOperation:(AFHTTPRequestOperation *)operation resultClass:(Class)resultClass
 {
     NSParameterAssert(operation != nil);
 
@@ -190,7 +182,7 @@ NSInteger const RNClientErrorUnsupportedServerScheme = 1006;
     NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
     NSInteger errorCode = RNClientErrorConnectionFailed;
 
-    userInfo[NSLocalizedDescriptionKey] = [self errorMessageFromRequestOperation:operation];
+    userInfo[NSLocalizedDescriptionKey] = [self errorMessageFromRequestOperation:operation resultClass:(Class)resultClass];
 
     switch (HTTPCode) {
         case 401:

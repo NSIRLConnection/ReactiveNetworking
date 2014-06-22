@@ -57,6 +57,6 @@ extern const NSInteger RNClientErrorUnsupportedServerScheme;
 - (RACSignal *)enqueueRequest:(NSURLRequest *)request resultClass:(Class)resultClass keyPaths:(NSArray *)keyPaths;
 
 // Subclasses can override this method to customize error response parsing.
-+ (NSString *)errorMessageFromRequestOperation:(AFHTTPRequestOperation *)operation;
++ (NSString *)errorMessageFromRequestOperation:(AFHTTPRequestOperation *)operation resultClass:(Class)resultClass;
 
 @end
