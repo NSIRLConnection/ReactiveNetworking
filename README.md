@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/plu/ReactiveNetworking.svg?branch=master)](https://travis-ci.org/plu/ReactiveNetworking)
+
 # ReactiveNetworking
 
 ReactiveNetworking is a Cocoa and Cocoa Touch framework for interacting with some API via HTTP, built using
