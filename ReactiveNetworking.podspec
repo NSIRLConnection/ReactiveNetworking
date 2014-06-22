@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name     = 'ReactiveNetworking'
-  s.version  = '0.9.0'
+  s.version  = '1.0.0'
   s.license  = 'MIT'
   s.summary  = 'Mixes the great AFNetworking with ReactiveCocoa.'
   s.homepage = 'https://github.com/plu/ReactiveNetworking'
