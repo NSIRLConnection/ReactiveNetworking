@@ -35,6 +35,7 @@ void (^stubResponseWithHeaders)(NSString *, NSString *, NSDictionary *) = ^(NSSt
 __block RNClient *client;
 
 beforeEach(^{
+    [OHHTTPStubs removeAllStubs];
     client = [[RNClient alloc] initWithBaseURL:[NSURL URLWithString:@"https://api.github.com"]
                                  responseClass:Response.class];
     [client registerHTTPOperationClass:AFJSONRequestOperation.class];
