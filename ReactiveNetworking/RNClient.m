@@ -72,28 +72,6 @@ NSInteger const RNClientErrorUnsupportedServerScheme = 1006;
         operation.successCallbackQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
         operation.failureCallbackQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
 
-        @weakify(operation);
-        operation.redirectResponseBlock = ^(NSURLConnection *connection, NSURLRequest *currentRequest, NSURLResponse *redirectResponse) {
-            @strongify(operation);
-            if (redirectResponse == nil) return currentRequest;
-
-            // Append RNClientErrorRequestStateRedirected to the current
-            // operation's userInfo when redirecting to a different URL scheme
-            NSString *currentHost = currentRequest.URL.host;
-            NSString *originalHost = originalRequest.URL.host;
-            NSString *currentScheme = currentRequest.URL.scheme;
-            NSString *originalScheme = originalRequest.URL.scheme;
-
-            BOOL hasOriginalHost = [currentHost isEqual:originalHost];
-            BOOL hasOriginalScheme = [currentScheme isEqual:originalScheme];
-
-            if (hasOriginalHost && !hasOriginalScheme) {
-                operation.userInfo = @{RNClientErrorRequestStateRedirected: @YES};
-            }
-
-            return currentRequest;
-        };
-
         [self enqueueHTTPRequestOperation:operation];
 
         return [RACDisposable disposableWithBlock:^{
