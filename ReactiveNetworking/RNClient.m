@@ -176,82 +176,10 @@ NSInteger const RNClientErrorUnsupportedServerScheme = 1006;
 
 #pragma mark - Error handling
 
-+ (NSString *)defaultErrorMessageFromRequestOperation:(AFHTTPRequestOperation *)operation
++ (NSString *)errorMessageFromRequestOperation:(AFHTTPRequestOperation *)operation
 {
     NSParameterAssert(operation != nil);
-
-    NSDictionary *responseDictionary = nil;
-    if ([operation isKindOfClass:AFJSONRequestOperation.class]) {
-        id JSON = [(AFJSONRequestOperation *)operation responseJSON];
-        if ([JSON isKindOfClass:NSDictionary.class]) {
-            responseDictionary = JSON;
-        }
-        else {
-            NSLog(@"Unexpected JSON for error response: %@", JSON);
-        }
-    }
-
-    NSString *errorDescription = responseDictionary[@"message"] ?: operation.error.localizedDescription;
-    if (errorDescription == nil) {
-        if ([operation.error.domain isEqual:NSURLErrorDomain]) {
-            errorDescription = NSLocalizedString(@"There was a problem connecting to the server.", @"");
-        }
-        else {
-            errorDescription = NSLocalizedString(@"The universe has collapsed.", @"");
-        }
-    }
-
-    NSArray *errorDictionaries = responseDictionary[@"errors"];
-    if ([errorDictionaries isKindOfClass:NSArray.class]) {
-        NSString *errors = [[[errorDictionaries.rac_sequence
-                              flattenMap:^(NSDictionary *errorDictionary) {
-                                  NSString *message = [self errorMessageFromErrorDictionary:errorDictionary];
-                                  if (message == nil) {
-                                      return [RACSequence empty];
-                                  } else {
-                                      return [RACSequence return:message];
-                                  }
-                              }]
-                             array]
-                            componentsJoinedByString:@"\n"];
-
-        errorDescription = [NSString stringWithFormat:NSLocalizedString(@"%@:\n\n%@", @""), errorDescription, errors];
-    }
-
-    return errorDescription;
-}
-
-+ (NSString *)errorMessageFromErrorDictionary:(NSDictionary *)errorDictionary
-{
-    NSString *message = errorDictionary[@"message"];
-    NSString *resource = errorDictionary[@"resource"];
-    if (message != nil) {
-        return [NSString stringWithFormat:NSLocalizedString(@"• %@ %@.", @""), resource, message];
-    }
-    else {
-        NSString *field = errorDictionary[@"field"];
-        NSString *codeType = errorDictionary[@"code"];
-
-        NSString * (^localizedErrorMessage)(NSString *) = ^(NSString *message) {
-            return [NSString stringWithFormat:message, resource, field];
-        };
-
-        NSString *codeString = localizedErrorMessage(@"%@ %@ is missing");
-        if ([codeType isEqual:@"missing"]) {
-            codeString = localizedErrorMessage(NSLocalizedString(@"%@ %@ does not exist", @""));
-        }
-        else if ([codeType isEqual:@"missing_field"]) {
-            codeString = localizedErrorMessage(NSLocalizedString(@"%@ %@ is missing", @""));
-        }
-        else if ([codeType isEqual:@"invalid"]) {
-            codeString = localizedErrorMessage(NSLocalizedString(@"%@ %@ is invalid", @""));
-        }
-        else if ([codeType isEqual:@"already_exists"]) {
-            codeString = localizedErrorMessage(NSLocalizedString(@"%@ %@ already exists", @""));
-        }
-
-        return [NSString stringWithFormat:@"• %@.", codeString];
-    }
+    return operation.error.localizedDescription;
 }
 
 + (NSError *)errorFromRequestOperation:(AFHTTPRequestOperation *)operation
@@ -262,7 +190,7 @@ NSInteger const RNClientErrorUnsupportedServerScheme = 1006;
     NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
     NSInteger errorCode = RNClientErrorConnectionFailed;
 
-    userInfo[NSLocalizedDescriptionKey] = [self defaultErrorMessageFromRequestOperation:operation];
+    userInfo[NSLocalizedDescriptionKey] = [self errorMessageFromRequestOperation:operation];
 
     switch (HTTPCode) {
         case 401:
