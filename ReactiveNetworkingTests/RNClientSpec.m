@@ -13,6 +13,11 @@
 @implementation Response;
 @end
 
+@interface Client : RNClient
+@end
+@implementation Client;
+@end
+
 @interface RNClient (Tests)
 
 - (RACSignal *)parsedResponseOfClass:(Class)resultClass fromJSON:(id)responseObject;
@@ -32,12 +37,12 @@ void (^stubResponseWithHeaders)(NSString *, NSString *, NSDictionary *) = ^(NSSt
     }];
 };
 
-__block RNClient *client;
+__block Client *client;
 
 beforeEach(^{
     [OHHTTPStubs removeAllStubs];
-    client = [[RNClient alloc] initWithBaseURL:[NSURL URLWithString:@"https://api.github.com"]
-                                 responseClass:Response.class];
+    client = [[Client alloc] initWithBaseURL:[NSURL URLWithString:@"https://api.github.com"]
+                               responseClass:Response.class];
     [client registerHTTPOperationClass:AFJSONRequestOperation.class];
     [client setDefaultHeader:@"Accept" value:@"application/json"];
     expect(client).notTo.beNil();
