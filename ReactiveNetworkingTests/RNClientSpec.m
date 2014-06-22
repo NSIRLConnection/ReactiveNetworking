@@ -8,6 +8,11 @@
 
 #import <ReactiveNetworking/ReactiveNetworking.h>
 
+@interface Response : RNResponse
+@end
+@implementation Response;
+@end
+
 @interface RNClient (Tests)
 
 - (RACSignal *)parsedResponseOfClass:(Class)resultClass fromJSON:(id)responseObject;
@@ -30,10 +35,33 @@ void (^stubResponseWithHeaders)(NSString *, NSString *, NSDictionary *) = ^(NSSt
 __block RNClient *client;
 
 beforeEach(^{
-    client = [[RNClient alloc] initWithBaseURL:[NSURL URLWithString:@"https://api.github.com"]];
+    client = [[RNClient alloc] initWithBaseURL:[NSURL URLWithString:@"https://api.github.com"]
+                                 responseClass:Response.class];
     [client registerHTTPOperationClass:AFJSONRequestOperation.class];
     [client setDefaultHeader:@"Accept" value:@"application/json"];
     expect(client).notTo.beNil();
+});
+
+describe(@"initializer", ^{
+    it(@"should throw an exception", ^{
+        __block RNClient *customClient;
+        expect(^{
+            customClient = [[RNClient alloc] initWithBaseURL:[NSURL URLWithString:@"https://api.github.com"]
+                                               responseClass:nil];
+        }).to.raise(NSInternalInconsistencyException);
+
+        expect(^{
+            customClient = [[RNClient alloc] initWithBaseURL:[NSURL URLWithString:@"https://api.github.com"]
+                                               responseClass:NSObject.class];
+        }).to.raise(NSInternalInconsistencyException);
+
+        expect(^{
+            customClient = [[RNClient alloc] initWithBaseURL:nil
+                                               responseClass:RNResponse.class];
+        }).to.raise(NSInternalInconsistencyException);
+
+        expect(customClient).to.beNil();
+    });
 });
 
 describe(@"parsingErrorWithFailureReason", ^{
@@ -121,10 +149,10 @@ describe(@"enqueueRequest", ^{
 
         NSURLRequest *request = [client requestWithMethod:@"GET" path:@"object" parameters:nil];
         RACSignal *result = [client enqueueRequest:request resultClass:RNObject.class keyPaths:nil];
-        RNResponse *response = [result asynchronousFirstOrDefault:nil success:&success error:&error];
+        Response *response = [result asynchronousFirstOrDefault:nil success:&success error:&error];
         RNObject *object = response.parsedResult;
 
-        expect(response).notTo.beNil();
+        expect(response).to.beKindOf(Response.class);
         expect(success).to.beTruthy();
         expect(error).to.beNil();
         expect(object.objectID).to.equal(@"1234");
@@ -134,10 +162,10 @@ describe(@"enqueueRequest", ^{
         stubResponseWithHeaders(@"/keypaths", @"keypaths.json", @{});
         NSURLRequest *request = [client requestWithMethod:@"GET" path:@"keypaths" parameters:nil];
         RACSignal *result = [client enqueueRequest:request resultClass:RNObject.class keyPaths:@[@"{http://www.example.com/schema/thing/v1}things", @"value.thing"]];
-        RNResponse *response = [result asynchronousFirstOrDefault:nil success:&success error:&error];
+        Response *response = [result asynchronousFirstOrDefault:nil success:&success error:&error];
         RNObject *object = response.parsedResult;
 
-        expect(response).notTo.beNil();
+        expect(response).to.beKindOf(Response.class);
         expect(success).to.beTruthy();
         expect(error).to.beNil();
         expect(object.objectID).to.equal(@"5678");

@@ -27,7 +27,29 @@ NSInteger const RNClientErrorRequestForbidden = 1004;
 NSInteger const RNClientErrorServiceRequestFailed = 1005;
 NSInteger const RNClientErrorUnsupportedServerScheme = 1006;
 
+@interface RNClient ()
+
+@property (nonatomic, strong, readonly) Class responseClass;
+
+@end
+
 @implementation RNClient
+
+- (instancetype)initWithBaseURL:(NSURL *)url responseClass:(Class)responseClass
+{
+    self = [super initWithBaseURL:url];
+    if (self) {
+        NSParameterAssert([responseClass isSubclassOfClass:RNResponse.class]);
+        _responseClass = responseClass;
+    }
+    return self;
+}
+
+- (instancetype)initWithBaseURL:(NSURL *)url
+{
+    self = [self initWithBaseURL:url responseClass:RNResponse.class];
+    return self;
+}
 
 - (RACSignal *)enqueueRequest:(NSURLRequest *)request
 {
@@ -96,7 +118,7 @@ NSInteger const RNClientErrorUnsupportedServerScheme = 1006;
                  return [[self
                           parsedResponseOfClass:resultClass fromJSON:wantedObject]
                          map:^(id parsedResult) {
-                             RNResponse *parsedResponse = [[RNResponse alloc] initWithHTTPURLResponse:response parsedResult:parsedResult];
+                             RNResponse *parsedResponse = [[self.responseClass alloc] initWithHTTPURLResponse:response parsedResult:parsedResult];
                              NSAssert(parsedResponse != nil, @"Could not create RNResponse with response %@ and parsedResult %@", response, parsedResult);
 
                              return parsedResponse;
