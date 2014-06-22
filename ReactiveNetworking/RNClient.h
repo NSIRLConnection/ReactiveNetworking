@@ -45,9 +45,6 @@ extern const NSInteger RNClientErrorRequestForbidden;
 // The server refused to process the request (HTTP error 422).
 extern const NSInteger RNClientErrorServiceRequestFailed;
 
-// The server scheme is unsupported.
-extern const NSInteger RNClientErrorUnsupportedServerScheme;
-
 @interface RNClient : AFHTTPClient
 
 // Inject a custom subclass of RNResponse as responseClass.

@@ -25,7 +25,6 @@ NSInteger const RNClientErrorAuthenticationFailed = 1002;
 NSInteger const RNClientErrorBadRequest = 1003;
 NSInteger const RNClientErrorRequestForbidden = 1004;
 NSInteger const RNClientErrorServiceRequestFailed = 1005;
-NSInteger const RNClientErrorUnsupportedServerScheme = 1006;
 
 @interface RNClient ()
 
@@ -200,10 +199,6 @@ NSInteger const RNClientErrorUnsupportedServerScheme = 1006;
         case 422:
             errorCode = RNClientErrorServiceRequestFailed;
             break;
-    }
-
-    if (operation.userInfo[RNClientErrorRequestStateRedirected] != nil) {
-        errorCode = RNClientErrorUnsupportedServerScheme;
     }
 
     userInfo[RNClientErrorHTTPStatusCodeKey] = @(HTTPCode);
