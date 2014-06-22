@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Johannes Plunien. All rights reserved.
 //
 
-#import <ReactiveNetworking/RNObject.h>
+#import <ReactiveNetworking/ReactiveNetworking.h>
 
 @interface RNClient (Tests)
 
