@@ -8,6 +8,8 @@
 
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
+#import <ReactiveNetworking/RNBaseClient.h>
 #import <ReactiveNetworking/RNClient.h>
+
 #import <ReactiveNetworking/RNObject.h>
 #import <ReactiveNetworking/RNResponse.h>

@@ -71,6 +71,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3E78663219589ABE00DB470C /* RNClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNClient.h; sourceTree = "<group>"; };
+		3E78663319589ABE00DB470C /* RNClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNClient.m; sourceTree = "<group>"; };
 		3EC1A59D194CFBA100D042AB /* Pods-osx.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-osx.xcconfig"; path = "Pods/Pods-osx.xcconfig"; sourceTree = "<group>"; };
 		3EC1A5A2194CFD2700D042AB /* RNClientSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNClientSpec.m; sourceTree = "<group>"; };
 		3EC1A5A5194CFD7E00D042AB /* ReactiveNetworkingTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ReactiveNetworkingTests-Prefix.pch"; sourceTree = "<group>"; };
@@ -91,8 +93,8 @@
 		3EF4FFC3194C271A00B163B6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		3EF4FFCA194C271A00B163B6 /* ReactiveNetworkingTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ReactiveNetworkingTests-Info.plist"; sourceTree = "<group>"; };
 		3EF4FFCC194C271A00B163B6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		3EF4FFD9194C2E8600B163B6 /* RNClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNClient.h; sourceTree = "<group>"; };
-		3EF4FFDA194C2E8600B163B6 /* RNClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNClient.m; sourceTree = "<group>"; };
+		3EF4FFD9194C2E8600B163B6 /* RNBaseClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNBaseClient.h; sourceTree = "<group>"; };
+		3EF4FFDA194C2E8600B163B6 /* RNBaseClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNBaseClient.m; sourceTree = "<group>"; };
 		3EF4FFDC194C3CA200B163B6 /* RNObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNObject.h; sourceTree = "<group>"; };
 		3EF4FFDD194C3CA200B163B6 /* RNObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNObject.m; sourceTree = "<group>"; };
 		3EF4FFDF194C3E0600B163B6 /* RNResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNResponse.h; sourceTree = "<group>"; };
@@ -266,8 +268,10 @@
 		3EF4FFD8194C2E6900B163B6 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				3EF4FFD9194C2E8600B163B6 /* RNClient.h */,
-				3EF4FFDA194C2E8600B163B6 /* RNClient.m */,
+				3EF4FFD9194C2E8600B163B6 /* RNBaseClient.h */,
+				3EF4FFDA194C2E8600B163B6 /* RNBaseClient.m */,
+				3E78663219589ABE00DB470C /* RNClient.h */,
+				3E78663319589ABE00DB470C /* RNClient.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";

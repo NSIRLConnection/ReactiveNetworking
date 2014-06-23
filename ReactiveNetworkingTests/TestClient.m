@@ -10,7 +10,7 @@
 
 @implementation TestClient
 
-+ (NSString *)errorMessageFromRequestOperation:(AFHTTPRequestOperation *)operation resultClass:(Class)resultClass
++ (NSString *)errorMessageFromRequestOperation:(AFHTTPRequestOperation *)operation
 {
     NSParameterAssert(operation != nil);
     NSDictionary *responseDictionary = nil;

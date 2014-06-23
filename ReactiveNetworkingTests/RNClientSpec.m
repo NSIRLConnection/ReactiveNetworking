@@ -59,7 +59,7 @@ describe(@"parsingErrorWithFailureReason", ^{
     it(@"should return an error object", ^{
         NSError *error = [client parsingErrorWithFailureReason:@"World down."];
         expect(error).notTo.beNil();
-        expect(error.domain).to.equal(RNClientErrorDomain);
+        expect(error.domain).to.equal(RNBaseClientErrorDomain);
         expect(error.code).to.equal(RNClientErrorJSONParsingFailed);
         expect(error.userInfo[NSLocalizedDescriptionKey]).notTo.beNil();
         expect(error.userInfo[NSLocalizedFailureReasonErrorKey]).to.equal(@"World down.");
@@ -188,11 +188,11 @@ describe(@"errorMessageFromRequestOperation", ^{
         expect(success).to.beFalsy();
         expect(error).notTo.beNil();
 
-        expect(error.domain).to.equal(RNClientErrorDomain);
-        expect(error.code).to.equal(RNClientErrorAuthenticationFailed);
+        expect(error.domain).to.equal(RNBaseClientErrorDomain);
+        expect(error.code).to.equal(RNBaseClientErrorAuthenticationFailed);
         expect(error.localizedDescription).to.equal(@"The world is down.");
-        expect(error.userInfo[RNClientErrorHTTPStatusCodeKey]).to.equal(401);
-        expect(error.userInfo[RNClientErrorRequestURLKey]).to.equal([NSURL URLWithString:@"https://api.github.com/whatever"]);
+        expect(error.userInfo[RNBaseClientErrorHTTPStatusCodeKey]).to.equal(401);
+        expect(error.userInfo[RNBaseClientErrorRequestURLKey]).to.equal([NSURL URLWithString:@"https://api.github.com/whatever"]);
         expect(error.userInfo[NSUnderlyingErrorKey]).notTo.beNil();
     });
 });

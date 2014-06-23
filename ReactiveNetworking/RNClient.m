@@ -1,8 +1,8 @@
 //
-//  RNClient.m
+//  RNClient.h
 //  ReactiveNetworking
 //
-//  Created by Johannes Plunien on 14/06/14.
+//  Created by Johannes Plunien on 23/06/14.
 //  Copyright (c) 2014 Johannes Plunien. All rights reserved.
 //
 
@@ -12,19 +12,7 @@
 #import <ReactiveNetworking/RNObject.h>
 #import <ReactiveNetworking/RNResponse.h>
 
-NSString * const RNClientErrorDomain = @"RNClientErrorDomain";
-NSString * const RNClientErrorRequestStateRedirected = @"RNClientErrorRequestStateRedirected";
-NSString * const RNClientErrorRequestURLKey = @"RNClientErrorRequestURLKey";
-NSString * const RNClientErrorHTTPStatusCodeKey = @"RNClientErrorHTTPStatusCodeKey";
-
-NSInteger const RNClientNotModifiedStatusCode = 304;
-
-NSInteger const RNClientErrorJSONParsingFailed = 1000;
-NSInteger const RNClientErrorConnectionFailed = 1001;
-NSInteger const RNClientErrorAuthenticationFailed = 1002;
-NSInteger const RNClientErrorBadRequest = 1003;
-NSInteger const RNClientErrorRequestForbidden = 1004;
-NSInteger const RNClientErrorServiceRequestFailed = 1005;
+NSInteger const RNClientErrorJSONParsingFailed = 2000;
 
 @interface RNClient ()
 
@@ -48,39 +36,6 @@ NSInteger const RNClientErrorServiceRequestFailed = 1005;
 {
     self = [self initWithBaseURL:url responseClass:RNResponse.class];
     return self;
-}
-
-- (RACSignal *)enqueueRequest:(NSURLRequest *)request
-{
-    NSURLRequest *originalRequest = [request copy];
-    RACSignal *signal = [RACSignal createSignal:^(id<RACSubscriber> subscriber) {
-        AFHTTPRequestOperation *operation = [self HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            if (operation.response.statusCode == RNClientNotModifiedStatusCode) {
-                // No change in the data.
-                [subscriber sendCompleted];
-                return;
-            }
-
-            [[RACSignal
-               return:RACTuplePack(operation.response, responseObject)]
-             subscribe:subscriber];
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            [subscriber sendError:[self.class errorFromRequestOperation:operation]];
-        }];
-
-        operation.successCallbackQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-        operation.failureCallbackQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-
-        [self enqueueHTTPRequestOperation:operation];
-
-        return [RACDisposable disposableWithBlock:^{
-            [operation cancel];
-        }];
-    }];
-
-    return [[signal
-             replayLazily]
-            setNameWithFormat:@"-enqueueRequest: %@", request];
 }
 
 - (RACSignal *)enqueueRequest:(NSURLRequest *)request resultClass:(Class)resultClass keyPaths:(NSArray *)keyPaths
@@ -170,50 +125,7 @@ NSInteger const RNClientErrorServiceRequestFailed = 1005;
         userInfo[NSLocalizedFailureReasonErrorKey] = localizedFailureReason;
     }
 
-    return [NSError errorWithDomain:RNClientErrorDomain code:RNClientErrorJSONParsingFailed userInfo:userInfo];
-}
-
-#pragma mark - Error handling
-
-+ (NSString *)errorMessageFromRequestOperation:(AFHTTPRequestOperation *)operation
-{
-    NSParameterAssert(operation != nil);
-    return operation.error.localizedDescription;
-}
-
-+ (NSError *)errorFromRequestOperation:(AFHTTPRequestOperation *)operation
-{
-    NSParameterAssert(operation != nil);
-
-    NSInteger HTTPCode = operation.response.statusCode;
-    NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
-    NSInteger errorCode = RNClientErrorConnectionFailed;
-
-    userInfo[NSLocalizedDescriptionKey] = [self errorMessageFromRequestOperation:operation];
-
-    switch (HTTPCode) {
-        case 401:
-            errorCode = RNClientErrorAuthenticationFailed;
-            break;
-
-        case 400:
-            errorCode = RNClientErrorBadRequest;
-            break;
-
-        case 403:
-            errorCode = RNClientErrorRequestForbidden;
-            break;
-
-        case 422:
-            errorCode = RNClientErrorServiceRequestFailed;
-            break;
-    }
-
-    userInfo[RNClientErrorHTTPStatusCodeKey] = @(HTTPCode);
-    if (operation.request.URL != nil) userInfo[RNClientErrorRequestURLKey] = operation.request.URL;
-    if (operation.error != nil) userInfo[NSUnderlyingErrorKey] = operation.error;
-
-    return [NSError errorWithDomain:RNClientErrorDomain code:errorCode userInfo:userInfo];
+    return [NSError errorWithDomain:RNBaseClientErrorDomain code:RNClientErrorJSONParsingFailed userInfo:userInfo];
 }
 
 @end
