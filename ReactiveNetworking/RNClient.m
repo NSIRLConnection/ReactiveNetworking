@@ -50,7 +50,7 @@ NSInteger const RNClientErrorServiceRequestFailed = 1005;
     return self;
 }
 
-- (RACSignal *)enqueueRequest:(NSURLRequest *)request resultClass:(Class)resultClass keyPaths:(NSArray *)keyPaths
+- (RACSignal *)enqueueRequest:(NSURLRequest *)request
 {
     NSURLRequest *originalRequest = [request copy];
     RACSignal *signal = [RACSignal createSignal:^(id<RACSubscriber> subscriber) {
@@ -65,7 +65,7 @@ NSInteger const RNClientErrorServiceRequestFailed = 1005;
                return:RACTuplePack(operation.response, responseObject)]
              subscribe:subscriber];
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            [subscriber sendError:[self.class errorFromRequestOperation:operation resultClass:(Class)resultClass]];
+            [subscriber sendError:[self.class errorFromRequestOperation:operation]];
         }];
 
         operation.successCallbackQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
@@ -78,7 +78,15 @@ NSInteger const RNClientErrorServiceRequestFailed = 1005;
         }];
     }];
 
-    return [[[[signal replayLazily] setNameWithFormat:@"-enqueueRequest: %@", request]
+    return [[signal
+             replayLazily]
+            setNameWithFormat:@"-enqueueRequest: %@", request];
+}
+
+- (RACSignal *)enqueueRequest:(NSURLRequest *)request resultClass:(Class)resultClass keyPaths:(NSArray *)keyPaths
+{
+    return [[[self
+              enqueueRequest:request]
              reduceEach:^(NSHTTPURLResponse *response, id responseObject) {
                  __block id wantedObject = responseObject;
                  [keyPaths enumerateObjectsUsingBlock:^(NSString *keyPath, NSUInteger idx, BOOL *stop) {
@@ -167,13 +175,13 @@ NSInteger const RNClientErrorServiceRequestFailed = 1005;
 
 #pragma mark - Error handling
 
-+ (NSString *)errorMessageFromRequestOperation:(AFHTTPRequestOperation *)operation resultClass:(Class)resultClass
++ (NSString *)errorMessageFromRequestOperation:(AFHTTPRequestOperation *)operation
 {
     NSParameterAssert(operation != nil);
     return operation.error.localizedDescription;
 }
 
-+ (NSError *)errorFromRequestOperation:(AFHTTPRequestOperation *)operation resultClass:(Class)resultClass
++ (NSError *)errorFromRequestOperation:(AFHTTPRequestOperation *)operation
 {
     NSParameterAssert(operation != nil);
 
@@ -181,7 +189,7 @@ NSInteger const RNClientErrorServiceRequestFailed = 1005;
     NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
     NSInteger errorCode = RNClientErrorConnectionFailed;
 
-    userInfo[NSLocalizedDescriptionKey] = [self errorMessageFromRequestOperation:operation resultClass:(Class)resultClass];
+    userInfo[NSLocalizedDescriptionKey] = [self errorMessageFromRequestOperation:operation];
 
     switch (HTTPCode) {
         case 401:
