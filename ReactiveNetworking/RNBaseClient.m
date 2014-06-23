@@ -9,9 +9,9 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <ReactiveNetworking/RNBaseClient.h>
 
-NSString * const RNBaseClientErrorDomain = @"RNClientErrorDomain";
-NSString * const RNBaseClientErrorRequestURLKey = @"RNClientErrorRequestURLKey";
-NSString * const RNBaseClientErrorHTTPStatusCodeKey = @"RNClientErrorHTTPStatusCodeKey";
+NSString * const RNBaseClientErrorDomain = @"RNBaseClientErrorDomain";
+NSString * const RNBaseClientErrorRequestURLKey = @"RNBaseClientErrorRequestURLKey";
+NSString * const RNBaseClientErrorHTTPStatusCodeKey = @"RNBaseClientErrorHTTPStatusCodeKey";
 
 NSInteger const RNBaseClientNotModifiedStatusCode = 304;
 
