@@ -10,9 +10,6 @@
 
 @interface RNClient (Tests)
 
-- (RACSignal *)parsedResponseOfClass:(Class)resultClass fromJSON:(id)responseObject;
-- (NSError *)parsingErrorWithFailureReason:(NSString *)localizedFailureReason;
-
 @end
 
 @interface TestClient : RNClient

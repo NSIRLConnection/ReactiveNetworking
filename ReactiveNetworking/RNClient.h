@@ -8,9 +8,6 @@
 
 #import <ReactiveNetworking/RNBaseClient.h>
 
-// JSON parsing failed, or a model object could not be created from the parsed JSON.
-extern NSInteger const RNClientErrorJSONParsingFailed;
-
 @interface RNClient : RNBaseClient
 
 // Inject a custom subclass of RNResponse as responseClass.
