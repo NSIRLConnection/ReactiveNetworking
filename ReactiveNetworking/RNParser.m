@@ -7,9 +7,9 @@
 //
 
 #import <ReactiveCocoa/ReactiveCocoa.h>
-#import <ReactiveNetworking/RNObject.h>
-#import <ReactiveNetworking/RNParser.h>
-#import <ReactiveNetworking/RNResponse.h>
+#import "RNObject.h"
+#import "RNParser.h"
+#import "RNResponse.h"
 
 NSString * const RNParserErrorDomain = @"RNParserErrorDomain";
 NSInteger const RNParserErrorJSONParsingFailed = 2000;

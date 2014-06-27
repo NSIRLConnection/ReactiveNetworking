@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 Johannes Plunien. All rights reserved.
 //
 
-#import <ReactiveNetworking/ReactiveNetworking.h>
 #import "TestClient.h"
 #import "TestResponse.h"
 

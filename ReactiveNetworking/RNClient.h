@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Johannes Plunien. All rights reserved.
 //
 
-#import <ReactiveNetworking/RNBaseClient.h>
+#import "RNBaseClient.h"
 
 @interface RNClient : RNBaseClient
 

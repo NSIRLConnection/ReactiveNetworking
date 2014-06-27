@@ -1,21 +1,18 @@
 inhibit_all_warnings!
 
 def import_pods
-  pod 'ReactiveNetworking', :path => '.'
-
-  pod 'Expecta'
-  pod 'OHHTTPStubs'
-  pod 'Specta'
+  pod 'ReactiveNetworking/Dependencies', :path => '.'
+  pod 'ReactiveNetworking/Testing', :path => '.'
 end
 
-target :ios do
+target 'ReactiveNetworking iOS' do
   platform :ios, '6.0'
-  link_with 'ReactiveNetworking iOS Tests'
+  #link_with 'ReactiveNetworking iOS Tests'
   import_pods
 end
 
-target :osx do
+target 'ReactiveNetworking Mac' do
   platform :osx, '10.8'
-  link_with 'ReactiveNetworking Mac Tests'
+  #link_with 'ReactiveNetworking Mac Tests'
   import_pods
 end

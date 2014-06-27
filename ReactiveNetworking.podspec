@@ -12,12 +12,25 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '6.0'
   s.osx.deployment_target = '10.8'
 
-  s.source_files = 'ReactiveNetworking/*.{h,m}'
+  s.default_subspec = 'Core'
 
-  s.dependency 'AFNetworking', '~> 1.0'
-  s.dependency 'Mantle', '~> 1.0'
-  s.dependency 'ReactiveCocoa', '~> 2.0'
-  s.dependency 'ReactiveCocoa/UI', '~> 2.0'
+  s.subspec 'Core' do |cs|
+    cs.source_files = 'ReactiveNetworking/*.{h,m}'
+    cs.dependency "#{s.name}/Dependencies"
+  end
+
+  s.subspec 'Dependencies' do |ds|
+    ds.dependency 'AFNetworking', '~> 1.0'
+    ds.dependency 'Mantle', '~> 1.0'
+    ds.dependency 'ReactiveCocoa', '~> 2.0'
+    ds.dependency 'ReactiveCocoa/UI', '~> 2.0'
+  end
+
+  s.subspec 'Testing' do |ts|
+    ts.dependency 'Expecta', '~> 0.3'
+    ts.dependency 'OHHTTPStubs', '~> 3.1'
+    ts.dependency 'Specta', '~> 0.2'
+  end
 
   s.prefix_header_contents = <<-EOS
 #if __IPHONE_OS_VERSION_MIN_REQUIRED

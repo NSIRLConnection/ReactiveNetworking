@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		339C9D0B99D34A01A794F13F /* libPods-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC299B3EAB7A4C03BB0F7BC3 /* libPods-ios.a */; };
+		2763E9F1BD9D405582864244 /* libPods-ReactiveNetworking Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F819F88664E4790AA21A67E /* libPods-ReactiveNetworking Mac.a */; };
 		3E565AF61958A3BE0075EAF5 /* RNParserSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E565AF51958A3BE0075EAF5 /* RNParserSpec.m */; };
 		3E565AF71958A3BE0075EAF5 /* RNParserSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E565AF51958A3BE0075EAF5 /* RNParserSpec.m */; };
 		3EC1A5A3194CFD2700D042AB /* RNClientSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC1A5A2194CFD2700D042AB /* RNClientSpec.m */; };
@@ -24,11 +24,23 @@
 		3EF4FFC2194C271A00B163B6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EF4FFB2194C271A00B163B6 /* Foundation.framework */; };
 		3EF4FFC4194C271A00B163B6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EF4FFC3194C271A00B163B6 /* UIKit.framework */; };
 		3EF4FFCD194C271A00B163B6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3EF4FFCB194C271A00B163B6 /* InfoPlist.strings */; };
+		6725540B195D518E0055DDC1 /* ReactiveNetworking Mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EF40020194CF33700B163B6 /* ReactiveNetworking Mac.framework */; };
+		6725540C195D51960055DDC1 /* libReactiveNetworking iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EF4FFAF194C271A00B163B6 /* libReactiveNetworking iOS.a */; };
 		6769DE111956F5BE003A7A45 /* keypaths.json in Resources */ = {isa = PBXBuildFile; fileRef = 3EE6E474194F8EC900957903 /* keypaths.json */; };
 		6769DE441956FFC1003A7A45 /* RNReadmeSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 6769DE431956FFC1003A7A45 /* RNReadmeSpec.m */; };
 		6769DE451956FFC1003A7A45 /* RNReadmeSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 6769DE431956FFC1003A7A45 /* RNReadmeSpec.m */; };
 		6769DE4719570283003A7A45 /* readme.json in Resources */ = {isa = PBXBuildFile; fileRef = 6769DE4619570283003A7A45 /* readme.json */; };
 		6769DE4819570283003A7A45 /* readme.json in Resources */ = {isa = PBXBuildFile; fileRef = 6769DE4619570283003A7A45 /* readme.json */; };
+		67722023195D48FE009A0C95 /* RNObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF4FFDD194C3CA200B163B6 /* RNObject.m */; };
+		67722024195D48FF009A0C95 /* RNObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF4FFDD194C3CA200B163B6 /* RNObject.m */; };
+		67722025195D4902009A0C95 /* RNResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF4FFE0194C3E0600B163B6 /* RNResponse.m */; };
+		67722026195D4902009A0C95 /* RNResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF4FFE0194C3E0600B163B6 /* RNResponse.m */; };
+		67722027195D4905009A0C95 /* RNBaseClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF4FFDA194C2E8600B163B6 /* RNBaseClient.m */; };
+		67722028195D4906009A0C95 /* RNBaseClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EF4FFDA194C2E8600B163B6 /* RNBaseClient.m */; };
+		67722029195D4908009A0C95 /* RNClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E78663319589ABE00DB470C /* RNClient.m */; };
+		6772202A195D4909009A0C95 /* RNClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E78663319589ABE00DB470C /* RNClient.m */; };
+		6772202B195D490B009A0C95 /* RNParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E86AF001958A14B006DDAFA /* RNParser.m */; };
+		6772202C195D490C009A0C95 /* RNParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E86AF001958A14B006DDAFA /* RNParser.m */; };
 		6772EDB6195770A6002300D7 /* error.json in Resources */ = {isa = PBXBuildFile; fileRef = 6772EDB5195770A6002300D7 /* error.json */; };
 		6772EDB7195770A6002300D7 /* error.json in Resources */ = {isa = PBXBuildFile; fileRef = 6772EDB5195770A6002300D7 /* error.json */; };
 		6772EDBB1957743B002300D7 /* TestClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 6772EDBA1957743B002300D7 /* TestClient.m */; };
@@ -39,7 +51,7 @@
 		6772EDC4195774EB002300D7 /* ReadmeClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 6772EDC2195774EB002300D7 /* ReadmeClient.m */; };
 		6772EDC719577535002300D7 /* ReadmeUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6772EDC619577535002300D7 /* ReadmeUser.m */; };
 		6772EDC819577535002300D7 /* ReadmeUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6772EDC619577535002300D7 /* ReadmeUser.m */; };
-		A7E3B11D6EA5428A86DD4B14 /* libPods-osx.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 594F044FA91F41DC9C2B6824 /* libPods-osx.a */; };
+		E9460F68AD1E49CEA3C72FAB /* libPods-ReactiveNetworking iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FEA9828397B94578A925BA1E /* libPods-ReactiveNetworking iOS.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,7 +90,6 @@
 		3E78663319589ABE00DB470C /* RNClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNClient.m; sourceTree = "<group>"; };
 		3E86AEFF1958A14B006DDAFA /* RNParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNParser.h; sourceTree = "<group>"; };
 		3E86AF001958A14B006DDAFA /* RNParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNParser.m; sourceTree = "<group>"; };
-		3EC1A59D194CFBA100D042AB /* Pods-osx.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-osx.xcconfig"; path = "Pods/Pods-osx.xcconfig"; sourceTree = "<group>"; };
 		3EC1A5A2194CFD2700D042AB /* RNClientSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNClientSpec.m; sourceTree = "<group>"; };
 		3EC1A5A5194CFD7E00D042AB /* ReactiveNetworkingTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ReactiveNetworkingTests-Prefix.pch"; sourceTree = "<group>"; };
 		3EC1A5A9194DCBF900D042AB /* object.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = object.json; sourceTree = "<group>"; };
@@ -104,10 +115,13 @@
 		3EF4FFDD194C3CA200B163B6 /* RNObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNObject.m; sourceTree = "<group>"; };
 		3EF4FFDF194C3E0600B163B6 /* RNResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNResponse.h; sourceTree = "<group>"; };
 		3EF4FFE0194C3E0600B163B6 /* RNResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNResponse.m; sourceTree = "<group>"; };
-		4434A736829946A3A8795B1C /* Pods-ios.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.xcconfig"; path = "Pods/Pods-ios.xcconfig"; sourceTree = "<group>"; };
 		594F044FA91F41DC9C2B6824 /* libPods-osx.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-osx.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F819F88664E4790AA21A67E /* libPods-ReactiveNetworking Mac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ReactiveNetworking Mac.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		674ECD6E195D4CA300451D1F /* libPods-ReactiveNetworking iOS-OHHTTPStubs.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-ReactiveNetworking iOS-OHHTTPStubs.a"; path = "Pods/build/Debug-iphoneos/libPods-ReactiveNetworking iOS-OHHTTPStubs.a"; sourceTree = "<group>"; };
 		6769DE431956FFC1003A7A45 /* RNReadmeSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNReadmeSpec.m; sourceTree = "<group>"; };
 		6769DE4619570283003A7A45 /* readme.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = readme.json; sourceTree = "<group>"; };
+		6772202D195D4924009A0C95 /* libPods-ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-ios.a"; path = "Pods/build/Debug-iphoneos/libPods-ios.a"; sourceTree = "<group>"; };
+		6772202F195D492C009A0C95 /* libPods-osx.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-osx.a"; path = "Pods/build/Debug/libPods-osx.a"; sourceTree = "<group>"; };
 		6772EDB5195770A6002300D7 /* error.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = error.json; sourceTree = "<group>"; };
 		6772EDB91957743B002300D7 /* TestClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestClient.h; sourceTree = "<group>"; };
 		6772EDBA1957743B002300D7 /* TestClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestClient.m; sourceTree = "<group>"; };
@@ -117,8 +131,11 @@
 		6772EDC2195774EB002300D7 /* ReadmeClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadmeClient.m; sourceTree = "<group>"; };
 		6772EDC519577535002300D7 /* ReadmeUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadmeUser.h; sourceTree = "<group>"; };
 		6772EDC619577535002300D7 /* ReadmeUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadmeUser.m; sourceTree = "<group>"; };
+		7EA7518256864F39BBD587CF /* Pods-ReactiveNetworking iOS.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactiveNetworking iOS.xcconfig"; path = "Pods/Pods-ReactiveNetworking iOS.xcconfig"; sourceTree = "<group>"; };
 		92C618DDB7164A3DAB345F4D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		B271199868F64CED845D6070 /* Pods-ReactiveNetworking Mac.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactiveNetworking Mac.xcconfig"; path = "Pods/Pods-ReactiveNetworking Mac.xcconfig"; sourceTree = "<group>"; };
 		BC299B3EAB7A4C03BB0F7BC3 /* libPods-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FEA9828397B94578A925BA1E /* libPods-ReactiveNetworking iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ReactiveNetworking iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +144,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3EF40022194CF33700B163B6 /* Cocoa.framework in Frameworks */,
+				2763E9F1BD9D405582864244 /* libPods-ReactiveNetworking Mac.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,7 +154,7 @@
 			files = (
 				3EF40037194CF33800B163B6 /* Cocoa.framework in Frameworks */,
 				3EF40036194CF33800B163B6 /* XCTest.framework in Frameworks */,
-				A7E3B11D6EA5428A86DD4B14 /* libPods-osx.a in Frameworks */,
+				6725540B195D518E0055DDC1 /* ReactiveNetworking Mac.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,6 +163,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3EF4FFB3194C271A00B163B6 /* Foundation.framework in Frameworks */,
+				E9460F68AD1E49CEA3C72FAB /* libPods-ReactiveNetworking iOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,10 +171,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3EF4FFC1194C271A00B163B6 /* XCTest.framework in Frameworks */,
-				3EF4FFC4194C271A00B163B6 /* UIKit.framework in Frameworks */,
 				3EF4FFC2194C271A00B163B6 /* Foundation.framework in Frameworks */,
-				339C9D0B99D34A01A794F13F /* libPods-ios.a in Frameworks */,
+				3EF4FFC4194C271A00B163B6 /* UIKit.framework in Frameworks */,
+				3EF4FFC1194C271A00B163B6 /* XCTest.framework in Frameworks */,
+				6725540C195D51960055DDC1 /* libReactiveNetworking iOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,8 +219,8 @@
 				3EF4FFC8194C271A00B163B6 /* ReactiveNetworkingTests */,
 				3EF4FFB1194C271A00B163B6 /* Frameworks */,
 				3EF4FFB0194C271A00B163B6 /* Products */,
-				4434A736829946A3A8795B1C /* Pods-ios.xcconfig */,
-				3EC1A59D194CFBA100D042AB /* Pods-osx.xcconfig */,
+				B271199868F64CED845D6070 /* Pods-ReactiveNetworking Mac.xcconfig */,
+				7EA7518256864F39BBD587CF /* Pods-ReactiveNetworking iOS.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -219,6 +238,9 @@
 		3EF4FFB1194C271A00B163B6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				674ECD6E195D4CA300451D1F /* libPods-ReactiveNetworking iOS-OHHTTPStubs.a */,
+				6772202F195D492C009A0C95 /* libPods-osx.a */,
+				6772202D195D4924009A0C95 /* libPods-ios.a */,
 				3EF4FFB2194C271A00B163B6 /* Foundation.framework */,
 				3EF4FFC0194C271A00B163B6 /* XCTest.framework */,
 				3EF4FFC3194C271A00B163B6 /* UIKit.framework */,
@@ -227,6 +249,8 @@
 				3EF40023194CF33800B163B6 /* Other Frameworks */,
 				BC299B3EAB7A4C03BB0F7BC3 /* libPods-ios.a */,
 				594F044FA91F41DC9C2B6824 /* libPods-osx.a */,
+				5F819F88664E4790AA21A67E /* libPods-ReactiveNetworking Mac.a */,
+				FEA9828397B94578A925BA1E /* libPods-ReactiveNetworking iOS.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -327,10 +351,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3EF40043194CF33800B163B6 /* Build configuration list for PBXNativeTarget "ReactiveNetworking Mac" */;
 			buildPhases = (
+				5D673DA0EC7E4331A1BC99B6 /* Check Pods Manifest.lock */,
 				3EF4001B194CF33700B163B6 /* Sources */,
 				3EF4001C194CF33700B163B6 /* Frameworks */,
 				3EF4001D194CF33700B163B6 /* Headers */,
 				3EF4001E194CF33700B163B6 /* Resources */,
+				0FE6A644E8014E9CAFA45EA0 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -345,10 +371,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3EF40046194CF33800B163B6 /* Build configuration list for PBXNativeTarget "ReactiveNetworking Mac Tests" */;
 			buildPhases = (
-				3DEDBC12988346EFBDFF4554 /* Check Pods Manifest.lock */,
+				5C0A548CCB9F412BAB226706 /* Check Pods Manifest.lock */,
 				3EF40031194CF33800B163B6 /* Sources */,
 				3EF40032194CF33800B163B6 /* Frameworks */,
 				3EF40033194CF33800B163B6 /* Resources */,
+				1CBC8B117B6848E4935B4247 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -364,9 +391,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3EF4FFD2194C271A00B163B6 /* Build configuration list for PBXNativeTarget "ReactiveNetworking iOS" */;
 			buildPhases = (
+				332470F46F1C4441BBC9543A /* Check Pods Manifest.lock */,
 				3EF4FFAB194C271A00B163B6 /* Sources */,
 				3EF4FFAC194C271A00B163B6 /* Frameworks */,
 				3EF4FFAD194C271A00B163B6 /* CopyFiles */,
+				EABFAE4CB7C6426AA5B6197D /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -381,10 +410,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3EF4FFD5194C271A00B163B6 /* Build configuration list for PBXNativeTarget "ReactiveNetworking iOS Tests" */;
 			buildPhases = (
-				A567A9B644EB4EDBAD8029F7 /* Check Pods Manifest.lock */,
+				3E1ACA67C9044DE69FEEFB3F /* Check Pods Manifest.lock */,
 				3EF4FFBB194C271A00B163B6 /* Sources */,
 				3EF4FFBC194C271A00B163B6 /* Frameworks */,
 				3EF4FFBD194C271A00B163B6 /* Resources */,
+				C7D94C367D75495BB6137BFF /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -464,7 +494,37 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3DEDBC12988346EFBDFF4554 /* Check Pods Manifest.lock */ = {
+		0FE6A644E8014E9CAFA45EA0 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-ReactiveNetworking Mac-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1CBC8B117B6848E4935B4247 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-ReactiveNetworking Mac-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		332470F46F1C4441BBC9543A /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -479,7 +539,7 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		A567A9B644EB4EDBAD8029F7 /* Check Pods Manifest.lock */ = {
+		3E1ACA67C9044DE69FEEFB3F /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -492,6 +552,66 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		5C0A548CCB9F412BAB226706 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		5D673DA0EC7E4331A1BC99B6 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C7D94C367D75495BB6137BFF /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-ReactiveNetworking iOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EABFAE4CB7C6426AA5B6197D /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-ReactiveNetworking iOS-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -501,6 +621,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6772202A195D4909009A0C95 /* RNClient.m in Sources */,
+				6772202C195D490C009A0C95 /* RNParser.m in Sources */,
+				67722028195D4906009A0C95 /* RNBaseClient.m in Sources */,
+				67722026195D4902009A0C95 /* RNResponse.m in Sources */,
+				67722024195D48FF009A0C95 /* RNObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -522,6 +647,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67722029195D4908009A0C95 /* RNClient.m in Sources */,
+				6772202B195D490B009A0C95 /* RNParser.m in Sources */,
+				67722027195D4905009A0C95 /* RNBaseClient.m in Sources */,
+				67722025195D4902009A0C95 /* RNResponse.m in Sources */,
+				67722023195D48FE009A0C95 /* RNObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -568,6 +698,7 @@
 /* Begin XCBuildConfiguration section */
 		3EF40044194CF33800B163B6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B271199868F64CED845D6070 /* Pods-ReactiveNetworking Mac.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -593,6 +724,7 @@
 		};
 		3EF40045194CF33800B163B6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B271199868F64CED845D6070 /* Pods-ReactiveNetworking Mac.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -615,7 +747,7 @@
 		};
 		3EF40047194CF33800B163B6 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3EC1A59D194CFBA100D042AB /* Pods-osx.xcconfig */;
+			baseConfigurationReference = B271199868F64CED845D6070 /* Pods-ReactiveNetworking Mac.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -639,7 +771,7 @@
 		};
 		3EF40048194CF33800B163B6 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3EC1A59D194CFBA100D042AB /* Pods-osx.xcconfig */;
+			baseConfigurationReference = B271199868F64CED845D6070 /* Pods-ReactiveNetworking Mac.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -730,10 +862,15 @@
 		};
 		3EF4FFD3194C271A00B163B6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7EA7518256864F39BBD587CF /* Pods-ReactiveNetworking iOS.xcconfig */;
 			buildSettings = {
 				DSTROOT = "@rpath";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ReactiveNetworking/ReactiveNetworking-Prefix.pch";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -741,10 +878,15 @@
 		};
 		3EF4FFD4194C271A00B163B6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7EA7518256864F39BBD587CF /* Pods-ReactiveNetworking iOS.xcconfig */;
 			buildSettings = {
 				DSTROOT = "@rpath";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ReactiveNetworking/ReactiveNetworking-Prefix.pch";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -752,7 +894,7 @@
 		};
 		3EF4FFD6194C271A00B163B6 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4434A736829946A3A8795B1C /* Pods-ios.xcconfig */;
+			baseConfigurationReference = 7EA7518256864F39BBD587CF /* Pods-ReactiveNetworking iOS.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -773,7 +915,7 @@
 		};
 		3EF4FFD7194C271A00B163B6 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4434A736829946A3A8795B1C /* Pods-ios.xcconfig */;
+			baseConfigurationReference = 7EA7518256864F39BBD587CF /* Pods-ReactiveNetworking iOS.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",

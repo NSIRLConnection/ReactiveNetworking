@@ -8,9 +8,9 @@
 
 #import <ReactiveCocoa/RACEXTScope.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
-#import <ReactiveNetworking/RNClient.h>
-#import <ReactiveNetworking/RNParser.h>
-#import <ReactiveNetworking/RNResponse.h>
+#import "RNClient.h"
+#import "RNParser.h"
+#import "RNResponse.h"
 
 @interface RNClient ()
 

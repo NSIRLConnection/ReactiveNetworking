@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Johannes Plunien. All rights reserved.
 //
 
-#import <ReactiveNetworking/ReactiveNetworking.h>
+#import "ReactiveNetworking.h"
 
 @interface ReadmeUser : RNObject
 

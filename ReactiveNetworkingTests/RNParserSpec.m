@@ -6,8 +6,7 @@
 //  Copyright (c) 2014 Johannes Plunien. All rights reserved.
 //
 
-#import <ReactiveNetworking/ReactiveNetworking.h>
-#import <ReactiveNetworking/RNParser.h>
+#import "RNParser.h"
 
 SpecBegin(RNParser)
 

@@ -7,7 +7,7 @@
 //
 
 #import <ReactiveCocoa/ReactiveCocoa.h>
-#import <ReactiveNetworking/RNBaseClient.h>
+#import "RNBaseClient.h"
 
 NSString * const RNBaseClientErrorDomain = @"RNBaseClientErrorDomain";
 NSString * const RNBaseClientErrorRequestURLKey = @"RNBaseClientErrorRequestURLKey";
@@ -25,7 +25,6 @@ NSInteger const RNBaseClientErrorServiceRequestFailed = 1005;
 
 - (RACSignal *)enqueueRequest:(NSURLRequest *)request
 {
-    NSURLRequest *originalRequest = [request copy];
     RACSignal *signal = [RACSignal createSignal:^(id<RACSubscriber> subscriber) {
         AFHTTPRequestOperation *operation = [self HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
             if (operation.response.statusCode == RNBaseClientNotModifiedStatusCode) {

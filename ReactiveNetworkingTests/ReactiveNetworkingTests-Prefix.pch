@@ -20,5 +20,5 @@
 
     #import <XCTest/XCTest.h>
     #import <ReactiveCocoa/ReactiveCocoa.h>
-    #import <ReactiveNetworking/ReactiveNetworking.h>
+    #import "ReactiveNetworking.h"
 #endif
