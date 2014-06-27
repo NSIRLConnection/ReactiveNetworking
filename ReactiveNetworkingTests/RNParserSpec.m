@@ -7,6 +7,7 @@
 //
 
 #import "RNParser.h"
+#import "TestObject.h"
 
 SpecBegin(RNParser)
 
@@ -66,10 +67,10 @@ describe(@"parsedResponseOfClass", ^{
 
     it(@"should return the parsed object", ^{
         NSDictionary *dictionary = @{@"id": @(42)};
-        id result = [[RNParser parsedResponseOfClass:RNObject.class fromJSON:dictionary] asynchronousFirstOrDefault:nil success:&success error:&error];
+        id result = [[RNParser parsedResponseOfClass:TestObject.class fromJSON:dictionary] asynchronousFirstOrDefault:nil success:&success error:&error];
         expect(success).to.beTruthy();
         expect(error).to.beNil();
-        expect(result).to.beKindOf(RNObject.class);
+        expect(result).to.beKindOf(TestObject.class);
     });
 });
 

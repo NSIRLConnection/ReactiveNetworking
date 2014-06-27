@@ -8,7 +8,7 @@
 
 #import "ReactiveNetworking.h"
 
-@interface ReadmeUser : RNObject
+@interface ReadmeUser : MTLModel <MTLJSONSerializing>
 
 @property (nonatomic, copy, readonly) NSString *objectID;
 @property (nonatomic, copy, readonly) NSString *login;

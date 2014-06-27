@@ -8,6 +8,7 @@
 
 #import "TestClient.h"
 #import "TestResponse.h"
+#import "TestObject.h"
 
 SpecBegin(RNClient)
 
@@ -67,27 +68,27 @@ describe(@"enqueueRequest", ^{
         stubResponseWithHeaders(@"/object", @"object.json", @{});
 
         NSURLRequest *request = [client requestWithMethod:@"GET" path:@"object" parameters:nil];
-        RACSignal *result = [client enqueueRequest:request resultClass:RNObject.class keyPaths:nil];
+        RACSignal *result = [client enqueueRequest:request resultClass:TestObject.class keyPaths:nil];
         TestResponse *response = [result asynchronousFirstOrDefault:nil success:&success error:&error];
-        RNObject *object = response.parsedResult;
+        TestObject *object = response.parsedResult;
 
         expect(response).to.beKindOf(TestResponse.class);
         expect(success).to.beTruthy();
         expect(error).to.beNil();
-        expect(object).to.beKindOf(RNObject.class);
+        expect(object).to.beKindOf(TestObject.class);
     });
 
     it(@"should traverse the keypaths", ^{
         stubResponseWithHeaders(@"/keypaths", @"keypaths.json", @{});
         NSURLRequest *request = [client requestWithMethod:@"GET" path:@"keypaths" parameters:nil];
-        RACSignal *result = [client enqueueRequest:request resultClass:RNObject.class keyPaths:@[@"{http://www.example.com/schema/thing/v1}things", @"value.thing"]];
+        RACSignal *result = [client enqueueRequest:request resultClass:TestObject.class keyPaths:@[@"{http://www.example.com/schema/thing/v1}things", @"value.thing"]];
         TestResponse *response = [result asynchronousFirstOrDefault:nil success:&success error:&error];
-        RNObject *object = response.parsedResult;
+        TestObject *object = response.parsedResult;
 
         expect(response).to.beKindOf(TestResponse.class);
         expect(success).to.beTruthy();
         expect(error).to.beNil();
-        expect(object).to.beKindOf(RNObject.class);
+        expect(object).to.beKindOf(TestObject.class);
     });
 });
 
@@ -109,7 +110,7 @@ describe(@"errorMessageFromRequestOperation", ^{
         }];
 
         NSURLRequest *request = [client requestWithMethod:@"GET" path:@"whatever" parameters:nil];
-        RACSignal *result = [client enqueueRequest:request resultClass:RNObject.class keyPaths:nil];
+        RACSignal *result = [client enqueueRequest:request resultClass:TestObject.class keyPaths:nil];
         TestResponse *response = [result asynchronousFirstOrDefault:nil success:&success error:&error];
 
         expect(response).to.beNil();

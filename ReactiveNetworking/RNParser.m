@@ -7,7 +7,7 @@
 //
 
 #import <ReactiveCocoa/ReactiveCocoa.h>
-#import "RNObject.h"
+#import "TestObject.h"
 #import "RNParser.h"
 #import "RNResponse.h"
 
@@ -28,7 +28,7 @@ NSInteger const RNParserErrorJSONParsingFailed = 2000;
             }
 
             NSError *error = nil;
-            RNObject *parsedObject = [MTLJSONAdapter modelOfClass:resultClass fromJSONDictionary:JSONDictionary error:&error];
+            MTLModel *parsedObject = [MTLJSONAdapter modelOfClass:resultClass fromJSONDictionary:JSONDictionary error:&error];
             if (parsedObject == nil) {
                 // Don't treat "no class found" errors as real parsing failures.
                 // In theory, this makes parsing code forward-compatible with
@@ -40,7 +40,7 @@ NSInteger const RNParserErrorJSONParsingFailed = 2000;
                 return;
             }
 
-            NSAssert([parsedObject isKindOfClass:RNObject.class], @"Parsed model object is not an RNObject: %@", parsedObject);
+            NSAssert([parsedObject isKindOfClass:MTLModel.class], @"Parsed model object is not an MTLModel: %@", parsedObject);
 
             [subscriber sendNext:parsedObject];
         };
