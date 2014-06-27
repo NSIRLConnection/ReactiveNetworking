@@ -41,10 +41,9 @@ JSON response:
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
-    NSDictionary *mapping = @{@"objectID": @"id",
-                              @"login": @"login_name",
-                              @"name": @"display_name"};
-    return [super.JSONKeyPathsByPropertyKey mtl_dictionaryByAddingEntriesFromDictionary:mapping];
+    return @{@"objectID": @"id",
+             @"login": @"login_name",
+             @"name": @"display_name"};
 }
 
 @end
