@@ -1,5 +1,3 @@
-inhibit_all_warnings!
-
 def import_pods
   pod 'ReactiveNetworking/Dependencies', :path => '.'
   pod 'ReactiveNetworking/Testing', :path => '.'
