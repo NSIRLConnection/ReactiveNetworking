@@ -41,7 +41,7 @@ describe(@"the example in the readme", ^{
         expect(error).to.beNil();
         expect(user.login).to.equal(@"plu");
         expect(user.name).to.equal(@"Johannes Plunien");
-        expect(user.objectID).to.equal(@"42");
+        expect(user.objectID).to.equal(@42);
     });
 });
 

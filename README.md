@@ -31,6 +31,7 @@ JSON response:
 ```objc
 @interface ReadmeUser : RNObject
 
+@property (nonatomic, copy, readonly) NSString *objectID;
 @property (nonatomic, copy, readonly) NSString *login;
 @property (nonatomic, copy, readonly) NSString *name;
 
@@ -40,16 +41,11 @@ JSON response:
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
-    NSDictionary *mapping = @{@"login": @"login_name",
+    NSDictionary *mapping = @{@"objectID": @"id",
+                              @"login": @"login_name",
                               @"name": @"display_name"};
     return [super.JSONKeyPathsByPropertyKey mtl_dictionaryByAddingEntriesFromDictionary:mapping];
 }
-
-@end
-
-@interface ReadmeClient : RNClient
-
-- (RACSignal *)fetchUser:(NSString *)username;
 
 @end
 ```
@@ -57,6 +53,12 @@ JSON response:
 ## API client
 
 ```objc
+@interface ReadmeClient : RNClient
+
+- (RACSignal *)fetchUser:(NSString *)username;
+
+@end
+
 @implementation ReadmeClient
 
 - (instancetype)initWithBaseURL:(NSURL *)url

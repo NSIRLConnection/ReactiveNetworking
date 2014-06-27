@@ -74,7 +74,7 @@ describe(@"enqueueRequest", ^{
         expect(response).to.beKindOf(TestResponse.class);
         expect(success).to.beTruthy();
         expect(error).to.beNil();
-        expect(object.objectID).to.equal(@"1234");
+        expect(object).to.beKindOf(RNObject.class);
     });
 
     it(@"should traverse the keypaths", ^{
@@ -87,7 +87,7 @@ describe(@"enqueueRequest", ^{
         expect(response).to.beKindOf(TestResponse.class);
         expect(success).to.beTruthy();
         expect(error).to.beNil();
-        expect(object.objectID).to.equal(@"5678");
+        expect(object).to.beKindOf(RNObject.class);
     });
 });
 

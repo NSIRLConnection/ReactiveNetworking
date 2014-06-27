@@ -66,10 +66,10 @@ describe(@"parsedResponseOfClass", ^{
 
     it(@"should return the parsed object", ^{
         NSDictionary *dictionary = @{@"id": @(42)};
-        RNObject *result = [[RNParser parsedResponseOfClass:RNObject.class fromJSON:dictionary] asynchronousFirstOrDefault:nil success:&success error:&error];
+        id result = [[RNParser parsedResponseOfClass:RNObject.class fromJSON:dictionary] asynchronousFirstOrDefault:nil success:&success error:&error];
         expect(success).to.beTruthy();
         expect(error).to.beNil();
-        expect(result.objectID).to.equal(@"42");
+        expect(result).to.beKindOf(RNObject.class);
     });
 });
 

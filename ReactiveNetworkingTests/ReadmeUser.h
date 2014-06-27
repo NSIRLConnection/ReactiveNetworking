@@ -10,6 +10,7 @@
 
 @interface ReadmeUser : RNObject
 
+@property (nonatomic, copy, readonly) NSString *objectID;
 @property (nonatomic, copy, readonly) NSString *login;
 @property (nonatomic, copy, readonly) NSString *name;
 
