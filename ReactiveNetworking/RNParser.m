@@ -7,7 +7,6 @@
 //
 
 #import <ReactiveCocoa/ReactiveCocoa.h>
-#import "TestObject.h"
 #import "RNParser.h"
 #import "RNResponse.h"
 
