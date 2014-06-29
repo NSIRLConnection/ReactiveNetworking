@@ -51,6 +51,9 @@
 		6772EDC819577535002300D7 /* ReadmeUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6772EDC619577535002300D7 /* ReadmeUser.m */; };
 		677FC4CB195DD1190013EE47 /* TestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 677FC4CA195DD1190013EE47 /* TestObject.m */; };
 		677FC4CC195DD1190013EE47 /* TestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 677FC4CA195DD1190013EE47 /* TestObject.m */; };
+		67B3C4A519605BCC006183C9 /* RACSignal+ReactiveNetworkingAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 67B3C4A319605BCC006183C9 /* RACSignal+ReactiveNetworkingAdditions.h */; };
+		67B3C4A619605BCC006183C9 /* RACSignal+ReactiveNetworkingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 67B3C4A419605BCC006183C9 /* RACSignal+ReactiveNetworkingAdditions.m */; };
+		67B3C4A719605BCC006183C9 /* RACSignal+ReactiveNetworkingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 67B3C4A419605BCC006183C9 /* RACSignal+ReactiveNetworkingAdditions.m */; };
 		E9460F68AD1E49CEA3C72FAB /* libPods-ReactiveNetworking iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FEA9828397B94578A925BA1E /* libPods-ReactiveNetworking iOS.a */; };
 /* End PBXBuildFile section */
 
@@ -131,6 +134,8 @@
 		6772EDC619577535002300D7 /* ReadmeUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadmeUser.m; sourceTree = "<group>"; };
 		677FC4C9195DD1190013EE47 /* TestObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestObject.h; sourceTree = "<group>"; };
 		677FC4CA195DD1190013EE47 /* TestObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestObject.m; sourceTree = "<group>"; };
+		67B3C4A319605BCC006183C9 /* RACSignal+ReactiveNetworkingAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RACSignal+ReactiveNetworkingAdditions.h"; sourceTree = "<group>"; };
+		67B3C4A419605BCC006183C9 /* RACSignal+ReactiveNetworkingAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RACSignal+ReactiveNetworkingAdditions.m"; sourceTree = "<group>"; };
 		7EA7518256864F39BBD587CF /* Pods-ReactiveNetworking iOS.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactiveNetworking iOS.xcconfig"; path = "Pods/Pods-ReactiveNetworking iOS.xcconfig"; sourceTree = "<group>"; };
 		92C618DDB7164A3DAB345F4D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B271199868F64CED845D6070 /* Pods-ReactiveNetworking Mac.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactiveNetworking Mac.xcconfig"; path = "Pods/Pods-ReactiveNetworking Mac.xcconfig"; sourceTree = "<group>"; };
@@ -259,6 +264,7 @@
 			isa = PBXGroup;
 			children = (
 				3EF4FFDB194C3C8A00B163B6 /* Base Models */,
+				67B3C4A219605BA9006183C9 /* Categories */,
 				3EF4FFD8194C2E6900B163B6 /* Classes */,
 				3EF4FFB7194C271A00B163B6 /* ReactiveNetworking.h */,
 				3EF4FFB5194C271A00B163B6 /* Supporting Files */,
@@ -334,6 +340,15 @@
 			name = Subclasses;
 			sourceTree = "<group>";
 		};
+		67B3C4A219605BA9006183C9 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				67B3C4A319605BCC006183C9 /* RACSignal+ReactiveNetworkingAdditions.h */,
+				67B3C4A419605BCC006183C9 /* RACSignal+ReactiveNetworkingAdditions.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -341,6 +356,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67B3C4A519605BCC006183C9 /* RACSignal+ReactiveNetworkingAdditions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -622,6 +638,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6772202A195D4909009A0C95 /* RNClient.m in Sources */,
+				67B3C4A719605BCC006183C9 /* RACSignal+ReactiveNetworkingAdditions.m in Sources */,
 				6772202C195D490C009A0C95 /* RNParser.m in Sources */,
 				67722028195D4906009A0C95 /* RNBaseClient.m in Sources */,
 				67722026195D4902009A0C95 /* RNResponse.m in Sources */,
@@ -648,6 +665,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				67722029195D4908009A0C95 /* RNClient.m in Sources */,
+				67B3C4A619605BCC006183C9 /* RACSignal+ReactiveNetworkingAdditions.m in Sources */,
 				6772202B195D490B009A0C95 /* RNParser.m in Sources */,
 				67722027195D4905009A0C95 /* RNBaseClient.m in Sources */,
 				67722025195D4902009A0C95 /* RNResponse.m in Sources */,

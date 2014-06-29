@@ -9,6 +9,8 @@
 #import <Mantle/Mantle.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
+#import "RACSignal+ReactiveNetworkingAdditions.h"
+
 #import "RNBaseClient.h"
 #import "RNClient.h"
 
