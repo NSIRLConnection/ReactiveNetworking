@@ -65,6 +65,10 @@ NSInteger const RNParserErrorJSONParsingFailed = 2000;
             NSString *failureReason = [NSString stringWithFormat:NSLocalizedString(@"Response wasn't an array or dictionary (%@): %@", @""), [responseObject class], responseObject];
             [subscriber sendError:[self parsingErrorWithFailureReason:failureReason]];
         }
+        else if (responseObject == nil) {
+            [subscriber sendNext:responseObject];
+            [subscriber sendCompleted];
+        }
 
         return nil;
     }];

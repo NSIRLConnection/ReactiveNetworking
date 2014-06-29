@@ -72,6 +72,13 @@ describe(@"parsedResponseOfClass", ^{
         expect(error).to.beNil();
         expect(result).to.beKindOf(TestObject.class);
     });
+
+    it(@"should send a response with an empty result", ^{
+        id result = [[RNParser parsedResponseOfClass:nil fromJSON:nil] asynchronousFirstOrDefault:nil success:&success error:&error];
+        expect(success).to.beTruthy();
+        expect(error).to.beNil();
+        expect(result).to.beNil();
+    });
 });
 
 SpecEnd
