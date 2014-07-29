@@ -49,5 +49,6 @@ extern const NSInteger RNBaseClientErrorServiceRequestFailed;
 
 // Subclasses can override this method to customize error response parsing.
 + (NSString *)errorMessageFromRequestOperation:(AFHTTPRequestOperation *)operation;
++ (NSError *)errorFromRequestOperation:(AFHTTPRequestOperation *)operation;
 
 @end
