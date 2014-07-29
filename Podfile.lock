@@ -4,7 +4,7 @@ PODS:
   - Mantle (1.5):
     - Mantle/extobjc
   - Mantle/extobjc (1.5)
-  - OHHTTPStubs (3.1.3)
+  - OHHTTPStubs (3.1.4)
   - ReactiveCocoa (2.3.1):
     - ReactiveCocoa/UI
   - ReactiveCocoa/Core (2.3.1):
@@ -12,12 +12,12 @@ PODS:
   - ReactiveCocoa/no-arc (2.3.1)
   - ReactiveCocoa/UI (2.3.1):
     - ReactiveCocoa/Core
-  - ReactiveNetworking/Dependencies (1.3.3):
+  - ReactiveNetworking/Dependencies (1.3.4):
     - AFNetworking (~> 1.0)
     - Mantle (~> 1.0)
     - ReactiveCocoa (~> 2.0)
     - ReactiveCocoa/UI (~> 2.0)
-  - ReactiveNetworking/Testing (1.3.3):
+  - ReactiveNetworking/Testing (1.3.4):
     - Expecta (~> 0.3)
     - OHHTTPStubs (~> 3.1)
     - Specta (~> 0.2)
@@ -35,9 +35,9 @@ SPEC CHECKSUMS:
   AFNetworking: 80c4e0652b08eb34e25b9c0ff3c82556fe5967b4
   Expecta: 03aabd0a89d8dea843baecb19a7fd7466a69a31d
   Mantle: c67a7e45e14196ed42b2a7cbb98ff6a9920e6b92
-  OHHTTPStubs: 13bf80ebecb14563d4db670fc461dca3a234a885
+  OHHTTPStubs: 398901e787d9b62ce539a8a3df0b81431a98236a
   ReactiveCocoa: dca75777b9d18990c8714a3a6f2149f29b4d1462
-  ReactiveNetworking: 669df9186dfca17c80ceb199af63a9d2f60ee6a4
+  ReactiveNetworking: 870e025cf0ba68c51572902ceea108f96b47ac1c
   Specta: 9141310f46b1f68b676650ff2854e1ed0b74163a
 
 COCOAPODS: 0.33.1
