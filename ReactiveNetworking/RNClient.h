@@ -13,7 +13,7 @@
 // Inject a custom subclass of RNResponse as responseClass.
 - (instancetype)initWithBaseURL:(NSURL *)url responseClass:(Class)responseClass;
 
-- (RACSignal *)enqueueRequest:(NSURLRequest *)request resultClass:(Class)resultClass;
-- (RACSignal *)enqueueRequest:(NSURLRequest *)request resultClass:(Class)resultClass keyPaths:(NSArray *)keyPaths;
+- (RACSignal *)enqueueRequest:(NSMutableURLRequest *)request resultClass:(Class)resultClass;
+- (RACSignal *)enqueueRequest:(NSMutableURLRequest *)request resultClass:(Class)resultClass keyPaths:(NSArray *)keyPaths;
 
 @end

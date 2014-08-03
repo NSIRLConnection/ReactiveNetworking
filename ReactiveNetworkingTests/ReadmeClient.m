@@ -25,7 +25,7 @@
 - (RACSignal *)fetchUser:(NSString *)username
 {
     NSString *path = [NSString stringWithFormat:@"/users/%@", username];
-	NSURLRequest *request = [self requestWithMethod:@"GET" path:path parameters:nil];
+	NSMutableURLRequest *request = [self requestWithMethod:@"GET" path:path parameters:nil];
 	return [self enqueueRequest:request
                     resultClass:ReadmeUser.class
                        keyPaths:@[@"user"]];

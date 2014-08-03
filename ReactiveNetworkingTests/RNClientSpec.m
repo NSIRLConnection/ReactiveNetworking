@@ -67,7 +67,7 @@ describe(@"enqueueRequest", ^{
     it(@"should return the object", ^{
         stubResponseWithHeaders(@"/object", @"object.json", @{});
 
-        NSURLRequest *request = [client requestWithMethod:@"GET" path:@"object" parameters:nil];
+        NSMutableURLRequest *request = [client requestWithMethod:@"GET" path:@"object" parameters:nil];
         RACSignal *result = [client enqueueRequest:request resultClass:TestObject.class keyPaths:nil];
         TestResponse *response = [result asynchronousFirstOrDefault:nil success:&success error:&error];
         TestObject *object = response.parsedResult;
@@ -80,7 +80,7 @@ describe(@"enqueueRequest", ^{
 
     it(@"should traverse the keypaths", ^{
         stubResponseWithHeaders(@"/keypaths", @"keypaths.json", @{});
-        NSURLRequest *request = [client requestWithMethod:@"GET" path:@"keypaths" parameters:nil];
+        NSMutableURLRequest *request = [client requestWithMethod:@"GET" path:@"keypaths" parameters:nil];
         RACSignal *result = [client enqueueRequest:request resultClass:TestObject.class keyPaths:@[@"{http://www.example.com/schema/thing/v1}things", @"value.thing"]];
         TestResponse *response = [result asynchronousFirstOrDefault:nil success:&success error:&error];
         TestObject *object = response.parsedResult;
@@ -109,7 +109,7 @@ describe(@"errorMessageFromRequestOperation", ^{
             return [OHHTTPStubsResponse responseWithFileAtPath:fileURL.path statusCode:401 headers:nil];
         }];
 
-        NSURLRequest *request = [client requestWithMethod:@"GET" path:@"whatever" parameters:nil];
+        NSMutableURLRequest *request = [client requestWithMethod:@"GET" path:@"whatever" parameters:nil];
         RACSignal *result = [client enqueueRequest:request resultClass:TestObject.class keyPaths:nil];
         TestResponse *response = [result asynchronousFirstOrDefault:nil success:&success error:&error];
 

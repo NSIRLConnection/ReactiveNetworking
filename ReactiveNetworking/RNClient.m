@@ -36,12 +36,12 @@
     return self;
 }
 
-- (RACSignal *)enqueueRequest:(NSURLRequest *)request resultClass:(Class)resultClass
+- (RACSignal *)enqueueRequest:(NSMutableURLRequest *)request resultClass:(Class)resultClass
 {
     return [self enqueueRequest:request resultClass:resultClass keyPaths:nil];
 }
 
-- (RACSignal *)enqueueRequest:(NSURLRequest *)request resultClass:(Class)resultClass keyPaths:(NSArray *)keyPaths
+- (RACSignal *)enqueueRequest:(NSMutableURLRequest *)request resultClass:(Class)resultClass keyPaths:(NSArray *)keyPaths
 {
     return [[[self
               enqueueRequest:request]
