@@ -48,7 +48,7 @@ extern const NSInteger RNBaseClientErrorServiceRequestFailed;
 - (RACSignal *)enqueueRequest:(NSURLRequest *)request;
 
 // Subclasses can override this method to customize error response parsing.
-+ (NSString *)errorMessageFromRequestOperation:(AFHTTPRequestOperation *)operation;
-+ (NSError *)errorFromRequestOperation:(AFHTTPRequestOperation *)operation;
+- (NSString *)errorMessageFromRequestOperation:(AFHTTPRequestOperation *)operation;
+- (NSError *)errorFromRequestOperation:(AFHTTPRequestOperation *)operation;
 
 @end

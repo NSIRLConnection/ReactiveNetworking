@@ -37,7 +37,7 @@ NSInteger const RNBaseClientErrorServiceRequestFailed = 1005;
                return:RACTuplePack(operation.response, responseObject)]
              subscribe:subscriber];
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            [subscriber sendError:[self.class errorFromRequestOperation:operation]];
+            [subscriber sendError:[self errorFromRequestOperation:operation]];
         }];
 
         operation.successCallbackQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
@@ -57,13 +57,13 @@ NSInteger const RNBaseClientErrorServiceRequestFailed = 1005;
 
 #pragma mark - Error handling
 
-+ (NSString *)errorMessageFromRequestOperation:(AFHTTPRequestOperation *)operation
+- (NSString *)errorMessageFromRequestOperation:(AFHTTPRequestOperation *)operation
 {
     NSParameterAssert(operation != nil);
     return operation.error.localizedDescription;
 }
 
-+ (NSError *)errorFromRequestOperation:(AFHTTPRequestOperation *)operation
+- (NSError *)errorFromRequestOperation:(AFHTTPRequestOperation *)operation
 {
     NSParameterAssert(operation != nil);
 
