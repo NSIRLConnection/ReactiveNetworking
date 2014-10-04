@@ -1,6 +1,7 @@
 language: objective-c
 rvm: 2.0.0
 install:
+  - xcodebuild -version
   - bundle install
   - bundle exec pod install
 before_script:
