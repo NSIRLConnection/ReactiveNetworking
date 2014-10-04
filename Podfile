@@ -1,5 +1,7 @@
 source 'https://github.com/CocoaPods/Specs.git'
 
+inhibit_all_warnings!
+
 target 'ReactiveNetworking iOS' do
   platform :ios, '6.0'
   pod 'ReactiveNetworking/Dependencies', :path => '.'
