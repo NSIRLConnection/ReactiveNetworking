@@ -14,7 +14,9 @@
 - (RACSignal *)rn_parsedResults
 {
 	return [self map:^(RNResponse *response) {
-		NSAssert([response isKindOfClass:RNResponse.class], @"Expected %@ to be an RNResponse.", response);
+#if !NS_BLOCK_ASSERTIONS
+        NSAssert([response isKindOfClass:RNResponse.class], @"Expected %@ to be an RNResponse.", response);
+#endif
 		return response.parsedResult;
 	}];
 }
